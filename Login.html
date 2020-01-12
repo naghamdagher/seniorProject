@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login</title>
+    <link rel="stylesheet" href="scriptfiles/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+
+   <style>
+   
+#login{
+       background-color: orange;
+       padding: 20px 20px ;;
+       margin: 100px 100px auto;
+       border-radius: 20px;
+       text-align: center;
+   }
+   
+  
+  
+   </style>
+</head>
+<body>
+    <div id="container">
+
+        <div id="login">
+            <h1>Login</h1>
+            <p><input type="text"id="username" placeholder="Enter your username..."></p>
+            <p><input type="password" id="password" placeholder="Enter your password..."></p>
+            <button onclick="login()">Login</button>
+        
+        </div>
+       
+    <div id="footer">
+         
+    </div>
+
+
+    <script>
+       "use strict";
+       let username = document.getElementById("username");
+       let password = document.getElementById("password");
+       
+       let valid =false;
+       
+      
+      function login(){
+         
+          for(let i=0; i<users.length; i++){
+           if(( username.value == users[i]) && (password.value == userPass[i]) ){
+               valid= true;   
+           }
+          }
+        
+         if(valid!= true){
+            document.write("<p>Invalid username or password</p>");
+         }
+         else{ window.alert("Login successful");
+         }
+       }
+    </script> 
+     <script src="scriptfiles/bootstrap.min.js"></script>
+     <script src="scriptfiles/jquery-3.3.1.min.js"></script>
+     <script src="scriptfiles/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>U-light management system</title>
+    <link rel="stylesheet" href="scriptfiles/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+    <div class="container" id="header">
+      
+    </div>
+    <div id="nav">
+    <nav class="navbar bg-dark navbar-dark navbar-expand-sm sticky-top">
+        <a href="#home" class="navbar-brand"><img src="images/lighticon.jpg" alt="icon" height="50px" width="50px"><b> &nbsp;U-</b> Light</a>
+        <button
+          type="button"
+          class="navbar-toggler"
+          data-target="#navbar-collapsible"
+          data-toggle="collapse"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div id="navbar-collapsible" class="collapse navbar-collapse">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <input type="text"  placeholder="seach..." id="searchInput">
+            </li>
+            <li class="nav-item">
+              <a href="#projects" class="nav-link">Projects</a>
+            </li>
+            <li class="nav-item">
+              <a href="#services" class="nav-link">Services</a>
+            </li>
+            <li class="nav-item">
+              <a href="#contactus" class="nav-link">Contact us</a>
+            </li>
+            <li class="nav-item">
+              <a href="Login.html" class="nav-link">Login</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+    <!--I have 4 sections: #home, #projects, #services, #contactus, The login is made only for staff  -->
+    <!--There is a social media tab between projects and services-->
+    <!--All text should be written in a paragraph to make the search function easy-->
+
+    <!--Division home: about us section-->
+    <div id="home" class="container">
+      <p style="font-size:64px; color: orange; font-weight: bold;">U-light</p>
+     <p></p>
+    </div>
+
+
+    <!--Division projects: current and future projects-->
+    <div id="projects" class="container" style="display: block; " >
+      <h1>Our projects</h1>
+      <div class="col-md-4 col-xl-6">
+        <p>
+          <span>Project1</span>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit nam nostrum ipsam nemo iure reprehenderit provident ducimus exercitationem. Quos eveniet saepe sequi fugiat voluptatum reprehenderit, ad odio quisquam voluptatem libero.
+        </p>
+      </div>
+
+      <div class="col-md-4 col-xl-6" >
+        <p>
+          Project 2
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, nostrum minus nemo ullam aperiam dolorum reiciendis distinctio veniam, maiores exercitationem error adipisci quae sapiente enim, neque itaque. Veniam, velit consectetur!
+
+        </p>
+      </div>
+    </div>
+
+    <!--Division services-->
+    <div id="services" class="container">
+      <h1>Our services</h1>
+    </div>
+    
+    <!--Division contact us-->
+    <div id="contactus" class="container">
+      <h1>Contact us</h1>
+
+    </div>
+
+      <div id="footer" >
+      </div>
+    <script>
+    "use strict";
+    
+    let searchInput=document.getElementById("searchInput");
+    let searchingValue=document.getElementsByTagName("p");
+    
+    
+    
+    
+
+    searchInput.addEventListener("keyup", function(){
+       let searchVal=searchInput.value.trim();
+      for( let i=0; i<searchingValue.length;i++){
+         
+           if(searchingValue[i].innerText.toLowerCase().indexOf(searchVal.toLowerCase())==-1)
+           {
+               searchingValue[i].style.display="none";
+           } else {
+                searchingValue[i].style.display="block";
+                
+               }
+       }
+    });
+    </script>
+    <script src="scriptfiles/bootstrap.min.js"></script>
+    <script src="scriptfiles/jquery-3.3.1.min.js"></script>
+    <script src="scriptfiles/script.js"></script>
+</body>
+</html>
