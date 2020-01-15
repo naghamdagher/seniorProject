@@ -164,16 +164,78 @@
       <h1>Our projects</h1>
       <div class="col-md-4 col-xl-6">
         <p>
-          <span>Project1</span>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit nam nostrum ipsam nemo iure reprehenderit provident ducimus exercitationem. Quos eveniet saepe sequi fugiat voluptatum reprehenderit, ad odio quisquam voluptatem libero.
+          <span class="work">Success Stories</span>
+          <ul>
+            <li>
+            68 teams of technicians spread out through our geographical lot for network operation and maintenance.
+            </li>
+            <li>
+              More than 2500 repair works executed per month. 
+              Approximately 97% of the faults repaired in the same day.
+            </li>
+            <li>
+              More than 6 567 construction work orders executed to extend the grid and connect customers.
+            </li>
+            <li>
+            13 450 Km of surveyed Network.
+            6 380 surveyed MV/LV Sub-Stations.
+            45 000 surveyed Poles.
+            </li>
+            <li>
+              More than $276M transferred already to EDL from Collection activity.
+            </li>
+            <li>
+              12 teams working daily on the detection and addressing of energy illegal consumption.
+            </li>
+            <li>
+            More than 3 576 fines issued to customers for detected cases of illegal electrical connections and meter tampering.
+            </li>
+            <li>
+              All teams working on the ground already received extensive safety and technical training.
+            </li>
+            <li>
+            Complete fleet of more than 100 vehicles acquired to facilitate U-light's services including bucket trucks and underground fault detector.
+            </li>
+            <li>
+              Selaata Facility including smart meters laboratory, warehouse and call center.
+            </li>
+          </ul>
         </p>
       </div>
 
       <div class="col-md-4 col-xl-6" >
         <p>
-          Project 2
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, nostrum minus nemo ullam aperiam dolorum reiciendis distinctio veniam, maiores exercitationem error adipisci quae sapiente enim, neque itaque. Veniam, velit consectetur!
-
+          <span class="work">Future projects</span>
+          At the moment U-light is performing:
+          <ul>
+            <li>
+              Meter reading & bill collection: 13 divisions are under Monthly Cycle Collection.
+            </li>
+            <li>
+              Planning and Design of new networks and new customer connections.
+            </li>
+            <li>
+              Construction of new networks and new customer connections.
+            </li>
+            <li>
+            Operation and Maintenance (preventive and repairs).
+            </li>
+            <li>
+            Operation of customer care contact centers in EDL offices.
+            </li>
+            <li>
+            Operation of our own call center in Selaata which is currently running 24/7.
+            </li>
+            <li>
+            Smart Metering Pilot Project Final Phase: Testing.
+            </li>
+            <li>
+            Roll-out of more than 200 Medium Voltage smart meters at outgoing medium voltage feeders from primary sub-stations.
+            </li>
+            <li>
+            Network tampering and violations discovery through dedicated Non-Technical losses specialized teams.
+            </li>
+          </ul>
         </p>
       </div>
     </div>
@@ -183,15 +245,36 @@
       <h1>Our services</h1>
      <div>
        <p>Key Figures:
-        3000 Km2  of covered Territory
-        520.000 Customers
-        2.000.000 Inhabitants
-        20.000 Km of Operated Network
-        6380 MV/LV Substations
-        850 Employees
-        16 Service Locations
-        130 Vehicles (including 5 bucket trucks and an underground fault detector)
-        55 M $US Network Investments expected until mid-2016   
+         <ul>
+           <li>
+             3000 Km2  of covered Territory
+           </li>
+           <li>
+             520.000 Customers
+           </li>
+           <li>
+             2.000.000 Inhabitants
+           </li>
+           <li>
+             20.000 Km of Operated Network
+           </li>
+           <li>
+             6380 MV/LV Substations
+           </li>
+           <li>
+             850 Employees
+           </li>
+           <li>
+             16 Service Locations
+           </li>
+           <li>
+             130 Vehicles (including 5 bucket trucks and an underground fault detector)
+           </li>
+           <li>
+             55 M $US Network Investments expected until mid-2016
+           </li>
+         </ul>
+        
     </p>
      </div> 
 
@@ -207,11 +290,11 @@
          planning, effective execution of network extension, network operation and maintenance, metering 
          and billing activities with full correlation of energy distributed, billed, and collected to 
          minimize and eliminate losses. 
-         BUS was accordingly commissioned to maintain and operate the electricity distribution grid in 
+         U-light was accordingly commissioned to maintain and operate the electricity distribution grid in 
          Northern Mount Lebanon and North Lebanon.
-         BUS is responsible for providing a distribution service to customers that is as smooth and 
+         U-light is responsible for providing a distribution service to customers that is as smooth and 
          undisrupted as possible but is in no way responsible for Lebanon’s insufficient electricity 
-         production that results in the need to cut power in certain areas in accordance with the EDL plan
+         production that results in the need to cut power in certain areas in accordance with the EDL plan.
         </p>
      </div>
     </div>
@@ -223,23 +306,26 @@
       <div class="row">
         <div class="col-lg-4">
           <div class="testimonial-item mx-auto mb-5 mb-lg-0">
-            <img class="img-fluid rounded-circle mb-3" src="img/testimonials-1.jpg" alt="">
-            <h5>Margaret E.</h5>
-            <p class="font-weight-light mb-0">"This is fantastic! Thanks so much guys!"</p>
+            <img class="img-fluid rounded-circle mb-3" src="Images/testimonial1.jpg" alt="">
+            <h5>Kamal Bou Haydar</h5>
+            <p class="font-weight-light mb-0">"U-light is an amazing company finishing the project before
+              its deadline and meeting the EDL requirements."</p>
           </div>
         </div>
         <div class="col-lg-4">
           <div class="testimonial-item mx-auto mb-5 mb-lg-0">
-            <img class="img-fluid rounded-circle mb-3" src="img/testimonials-2.jpg" alt="">
+            <img class="img-fluid rounded-circle mb-3" src="Images/testimonial2.jpg" alt="">
             <h5>Fred S.</h5>
-            <p class="font-weight-light mb-0">"Bootstrap is amazing. I've been using it to create lots of super nice landing pages."</p>
+            <p class="font-weight-light mb-0">"Bootstrap is amazing. I've been using it to create lots 
+              of super nice landing pages."</p>
           </div>
         </div>
         <div class="col-lg-4">
           <div class="testimonial-item mx-auto mb-5 mb-lg-0">
-            <img class="img-fluid rounded-circle mb-3" src="img/testimonials-3.jpg" alt="">
+            <img class="img-fluid rounded-circle mb-3" src="Images/testimonial3.jpg" alt="">
             <h5>Sarah W.</h5>
-            <p class="font-weight-light mb-0">"Thanks so much for making these free resources available to us!"</p>
+            <p class="font-weight-light mb-0">"Thanks so much for providing electricity power and resources 
+              available to us!"</p>
           </div>
         </div>
       </div>
