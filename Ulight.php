@@ -1,3 +1,10 @@
+<?php 
+session_start();
+include 'includes/dbConnection.php';
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,8 +22,9 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
       <div class="container">
   
-        <a class="navbar-brand js-scroll-trigger" href="#top">U-light </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <a class="navbar-brand js-scroll-trigger" href="#top"><img src="Images/lighticon.jpg" height="40" alt="logo">U-light </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" 
+        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
@@ -160,9 +168,9 @@
 
 
     <!--Division projects: current and future projects-->
-    <div id="projects" class="container" style="display: block; " >
+    <div id="projects" class="container" style="display: block;" >
       <h1>Our projects</h1>
-      <div class="col-md-4 col-xl-6">
+      <div class="col-md-6 col-xl-6" style="display: inline;">
         <p>
           <span class="work">Success Stories</span>
           <ul>
@@ -203,7 +211,7 @@
         </p>
       </div>
 
-      <div class="col-md-4 col-xl-6" >
+      <div class="col-md-6 col-xl-6" style="display: inline;" >
         <p>
           <span class="work">Future projects</span>
           At the moment U-light is performing:
@@ -274,9 +282,11 @@
              55 M $US Network Investments expected until mid-2016
            </li>
          </ul>
-        
     </p>
      </div> 
+     <div style="background-image: url('Images/service.jpg');">
+
+     </div>
 
      <div>
        <p>Electricité Du Liban currently reports $300 million in annual losses, a significant 
@@ -306,26 +316,26 @@
       <div class="row">
         <div class="col-lg-4">
           <div class="testimonial-item mx-auto mb-5 mb-lg-0">
-            <img class="img-fluid rounded-circle mb-3" src="Images/testimonial1.jpg" alt="">
-            <h5>Kamal Bou Haydar</h5>
+            <img class="img-fluid rounded-circle mb-3" src="Images/testimonial2.jpg" alt="">
+            <h5>Kamal H.</h5>
             <p class="font-weight-light mb-0">"U-light is an amazing company finishing the project before
               its deadline and meeting the EDL requirements."</p>
           </div>
         </div>
         <div class="col-lg-4">
           <div class="testimonial-item mx-auto mb-5 mb-lg-0">
-            <img class="img-fluid rounded-circle mb-3" src="Images/testimonial2.jpg" alt="">
-            <h5>Fred S.</h5>
-            <p class="font-weight-light mb-0">"Bootstrap is amazing. I've been using it to create lots 
-              of super nice landing pages."</p>
+            <img class="img-fluid rounded-circle mb-3" src="Images/testimonial5.jpg" alt="">
+            <h5>Jessica S.</h5>
+            <p class="font-weight-light mb-0">"U-light is a whole other level of professionalism. 
+              I've been working with the team to create lots of super nice landing projects."</p>
           </div>
         </div>
         <div class="col-lg-4">
           <div class="testimonial-item mx-auto mb-5 mb-lg-0">
             <img class="img-fluid rounded-circle mb-3" src="Images/testimonial3.jpg" alt="">
-            <h5>Sarah W.</h5>
-            <p class="font-weight-light mb-0">"Thanks so much for providing electricity power and resources 
-              available to us!"</p>
+            <h5>Roy T.</h5>
+            <p class="font-weight-light mb-0">"Thank you so much for providing electricity power and making 
+              resources available to us!"</p>
           </div>
         </div>
       </div>
@@ -340,11 +350,12 @@
      </div>
    
     <div id="map"></div>
+
  </div>
     <div class="footer">
     
       <div class="footer-copyright text-center py-3">
-        <a href="Ulight.html" style="color: black;"> U-light</a> © 2020 
+        <a href="Ulight.php" style="color: black;"> U-light</a> © 2020 
       </div>
      
     </div>

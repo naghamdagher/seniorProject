@@ -1,11 +1,6 @@
-<?php
-$con = mysqli_connect("localhost","root","","dagherco");
-
-// Check connection
-if (mysqli_connect_errno())
-  {
-  echo "Failed to connect to MySQL: " . mysqli_connect_error();
-  }
+<?php 
+session_start();
+include 'includes/dbConnection.php';
 ?>
 
 
@@ -31,13 +26,15 @@ if (mysqli_connect_errno())
 
 </head>
 
+
 <body>
+
 
     <div id="page-top">
 
         <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-            <a class="navbar-brand mr-1" href="Ulight.html">U-light Admin</a>
+            <a class="navbar-brand mr-1" href="Ulight.php">U-light Admin</a>
 
             <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
                 <i class="fas fa-bars"></i>

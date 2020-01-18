@@ -1,14 +1,7 @@
 <?php 
 session_start();
 include 'includes/dbConnection.php';
-// for expired session 
-if (!$_SESSION["user_name_loggedIn_admin"]) {
-    $_SESSION["expired_session"] = "Your session has been expired, relog in!";
-    header("Location: index.php");
-}
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -27,7 +20,39 @@ if (!$_SESSION["user_name_loggedIn_admin"]) {
 
 
     <div id="login-form-wrap">
-        <form id="login-form" action="includes/phpScripts.php" method="post" class="form login">
+
+
+	<?php if (isset($_SESSION["success"])) { ?>
+				<div class="alert alert-success">
+					<strong>Success!</strong>
+                     <?php echo $_SESSION["success"]; 
+                     session_unset(); ?>
+				</div>
+			<?php 
+	} ?>
+
+			<?php if (isset($_SESSION["error"])) { ?>
+				<div class="alert alert-danger">
+					<strong>Alert!</strong> 
+                    <?php echo $_SESSION["error"];
+						session_unset(); ?>
+				</div>
+			<?php 
+	} ?>
+
+			<?php if (isset($_SESSION["expired_session"])) { ?>
+				<div class="alert alert-danger">
+					<strong>Alert!</strong> <?php echo $_SESSION["expired_session"];
+						session_unset(); ?>
+				</div>
+			<?php 
+	} ?>
+
+
+
+
+
+       <form id="login-form" action="includes/phpScripts.php" method="post" class="form login">
             <h2>LOGIN</h2>
             <p>
                 <input id="login__username" type="text" name="txtUsername" class="form__input" placeholder="Username"
@@ -39,10 +64,11 @@ if (!$_SESSION["user_name_loggedIn_admin"]) {
 
             </p>
             <p>
-                <input type="submit" id="login" value="Login">
+                <input type="submit"  name="btnLogin" id="login" value="Login">
             </p>
 
         </form>
+
         <div id="create-account-wrap">
             <p>Not a member? <a href="#" style="color: #8e8e8a;">Contact admin</a></p>
         </div>
@@ -56,7 +82,7 @@ if (!$_SESSION["user_name_loggedIn_admin"]) {
     <div class="footer">
     
         <div class="footer-copyright text-center py-3">
-          <a href="Ulight.html" style="color: black;"> U-light</a> © 2020 
+          <a href="Ulight.php" style="color: black;"> U-light</a> © 2020 
         </div>
        
       </div>
