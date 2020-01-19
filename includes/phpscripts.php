@@ -33,8 +33,6 @@
 
 
     // add client
-
-
 if (isset($_POST["btnRegisterClient"])) {
 
 	$name = $_POST["txtName"];
@@ -60,3 +58,14 @@ if (isset($_POST["btnRegisterClient"])) {
 
 	$con->close();
 }
+
+
+// add User
+
+///add store
+
+
+
+////contractor
+
+// product
