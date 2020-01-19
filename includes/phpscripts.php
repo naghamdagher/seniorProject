@@ -31,3 +31,32 @@
     }
 
 
+
+    // add client
+
+
+if (isset($_POST["btnRegisterClient"])) {
+
+	$name = $_POST["txtName"];
+	$address = $_POST["txtAdress"];
+	$phone = $_POST["txtPhone"];
+	$email = $_POST["txtEmail"];
+	$tva_number = $_POST["txtTva"];
+	$engineer = $_POST["txtEngineer"];
+
+
+	$sql = "INSERT INTO client(cname, caddress ,phone, email, tva_number , engineer)
+	VALUES ('" . $name . "', '" . $address . "', '" . $phone . "', '" . $email . "','" . $tva_number . "', '" . $engineer . "')";
+
+	if ($con->query($sql) === true) {
+		$message = "New record created successfully";
+		$_SESSION["success"] = $message;
+		header("location: ../client.php");
+	} else {
+		$message = "Error: " . $sql . "<br>" . $con->error;
+		$_SESSION["error"] = $message;
+		header("location: ../client.php");
+	}
+
+	$con->close();
+}

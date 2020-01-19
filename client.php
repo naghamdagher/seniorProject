@@ -73,11 +73,11 @@ include 'includes/dbConnection.php';
 
 
         <div id="wrapper">
-
+      
             <!-- Sidebar -->
             <ul class="sidebar navbar-nav">
-                
-            <li class="nav-item">
+
+                <li class="nav-item">
                     <a class="nav-link" href="client.php">
                         <i class="fas fa-fw fa fa-users"></i>
                         <span>Client</span>
@@ -117,69 +117,250 @@ include 'includes/dbConnection.php';
                         <i class="fas fa-fw fa-user"></i>
                         <span>User</span></a>
                 </li>
-              
+
             </ul>
 
+            <div id="content-wrapper">
+            <div class="container-fluid">
 
             <!-- Table with query to fill it -->
-            <?php $sql = 'SELECT ID,name,location FROM supplier';        
-                $query = mysqli_query($con, $sql);
-							if (!$query) {
-							die('SQL Error:' . mysqli_error($con));
-						}?>
 
-            <!-- DataTables Example -->
-            <div class="card mb-3">
-                <div class="card-header">
-                    <i class="fas fa-table"></i>
-                    Data Table Example</div>
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                        <thead>
+            <?php $sql = 'SELECT c_id,cname,caddress,phone,email,tva_number,engineer FROM client';
+                        $query = mysqli_query($con, $sql);
+
+                        if (!$query) {
+                            die('SQL Error:' . mysqli_error($con));
+                        }
+                        ?>
+
+
+
+
+           <!-- DataTables Example -->
+           <div class="card mb-3">
+                            <div class="card-header"><i class="fas fa-table"></i> Member List</div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        <thead>
                                 <tr>
-                                    <th class="sorting_desc">Club Name</th>
-                                    <th class="sorting_desc">Location</th>
-                                    <th class="sorting_desc">Action</th>
+                                    <th class="sorting_desc">Client Name</th>
+                                    <th class="sorting_desc">Address</th>
+                                    <th class="sorting_desc">Phone</th>
+                                    <th class="sorting_desc">Email</th>
+                                    <th class="sorting_desc">Tva Number</th>
+                                    <th class="sorting_desc">Engineer</th>
                                 </tr>
                             </thead>
 
                             <?php while ($row = mysqli_fetch_array($query)) { ?>
-                                <tr>
-                                    <td><?php echo $row['cl_name']; ?></td>
-                                    <td><?php echo $row['cl_location']; ?></td>
-                                    <td>
-                                        <a href="" style="color:blue;"> <i class="fas fa-pen"></i></a>
-                                        <a href="club.php?idd=<?php echo $row['cl_id']; ?>" onclick="return confirm('Are you sure ?')" style="color:red;"><i class="fas fa-remove"></i></a>
-                                    </td>
-                                </tr>
+                            <tr>
+                                <td><?php echo $row['cname']; ?></td>
+                                <td><?php echo $row['caddress']; ?></td>
+                                <td><?php echo $row['phone']; ?></td>
+                                <td><?php echo $row['email']; ?></td>
+                                <td><?php echo $row['tva_number']; ?></td>
+                                <td><?php echo $row['engineer']; ?></td>
+
+                                <td>
+                                    <a href="" style="color:blue;"> <i class="fas fa-pen"></i></a>
+                                    <a href="client.php?idd=<?php echo $row['c_id']; ?>"
+                                        onclick="return confirm('Are you sure ?')" style="color:red;"><i
+                                            class="fas fa-remove"></i></a>
+                                </td>
+                            </tr>
                             <?php
                         } ?>
-                            
+
                         </table>
                     </div>
                 </div>
-                <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+
+ <!-- Delete Query -->
+ <?php
+                            if (isset($_GET['idd'])) {
+                                $idd = $_GET['idd'];
+                                $sql = "Delete from member where m_id='" . $idd . "'";
+                                if ($idd != '') {
+                                    $query = mysqli_query($con, $sql);
+                                    //header("Refresh:0; url=member.php");
+                                }
+                            }
+                            ?>
+
+                            <!-- session for add member button -->
+                            <?php if (isset($_SESSION["success"])) { ?>
+                                <div class="alert alert-success">
+                                    <strong>Success! </strong> <?php echo $_SESSION["success"];
+                                                                session_unset(); ?>
+                                </div>
+                            <?php
+                        } ?>
+
+
+                            <?php if (isset($_SESSION["error"])) { ?>
+                                <div class="alert alert-danger">
+                                    <strong>Alert! </strong> <?php echo $_SESSION["error"];
+                                                                session_unset(); ?>
+                                </div>
+                            <?php
+                        } ?>
+
+
+
+
+
             </div>
 
 
         </div>
 
 
-        <!-- Bootstrap core JavaScript-->
-        <script src="dashboard/vendor/jquery/jquery.min.js"></script>
-        <script src="dashboard/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+            <div id="wrapper">
+                <div id="content-wrapper">
+                    <div class="container-fluid">
 
-        <!-- Core plugin JavaScript-->
-        <script src="dashboard/vendor/jquery-easing/jquery.easing.min.js"></script>
 
-        <!-- Page level plugin JavaScript-->
-        <script src="dashboard/vendor/chart.js/Chart.min.js"></script>
-        <script src="dashboard/vendor/datatables/jquery.dataTables.js"></script>
-        <script src="dashboard/vendor/datatables/dataTables.bootstrap4.js"></script>
+                        <section class="content">
+                            <br>
+                            <div class="col-md-12 box box-default">
+                                <div class="box-header">
+                                    <section class="content-header">
+                                        <h1>
+                                            <i class="fa fa-building"></i>
+                                            Client
+                                        </h1>
+                                    </section>
+                                </div>
+                                <hr>
 
-        <!-- Custom scripts for all pages-->
-        <script src="dashboard/js/sb-admin.min.js"></script>
+                                <div class="container" id="member-registration-container">
+                                    <button type="button" class="btn btn-info" data-toggle="modal"
+                                        data-target="#myModal"><i class="fas fa-plus" style="color: white;"></i>
+                                        Client</button>
+                                    <br> <br> <br>
+
+                                    <!-- Table with query to fill it -->
+                                    <!-- DataTables Example -->
+                                    <div class="card mb-3">
+                                        <div class="card-header"><i class="fas fa-table"></i> Client List</div>
+                                        <div class="card-body">
+                                            <div class="table-responsive">
+                                                <table class="table table-bordered" id="dataTable" width="100%"
+                                                    cellspacing="0">
+                                                    <thead>
+                                                        <tr>
+                                                        <th class="sorting_desc">Client Name</th>
+                                    <th class="sorting_desc">Address</th>
+                                    <th class="sorting_desc">Phone</th>
+                                    <th class="sorting_desc">Email</th>
+                                    <th class="sorting_desc">Tva Number</th>
+                                    <th class="sorting_desc">Engineer</th>
+                                                        </tr>
+                                                    </thead>
+
+                                                </table>
+                                            </div>
+                                        </div>
+
+                                        <!-- Delete Query -->
+
+                                        <!-- session for add member button -->
+
+
+                                        <!-- ADD Client -->
+
+                                        <div class="modal fade" id="myModal">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="card card-register">
+                                                        <div class="card-header">Add Client</div>
+                                                        <div class="card-body">
+                                                            <form method="post" action="includes/phpScripts.php">
+                                                                <div class="form-group">
+                                                                    <input type="text" name="txtFName"
+                                                                        placeholder="First Name" class="form-control"
+                                                                        required="required">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <input type="text" name="txtPhone"
+                                                                        placeholder="Telephone" class="form-control"
+                                                                        required="required">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <input name="txtAddress" class="form-control"
+                                                                        placeholder="Address" required="required">
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <input type="email" name="txtEmail"
+                                                                        placeholder="Email" class="form-control"
+                                                                        required="required">
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <input type="text" name="txtTva"
+                                                                        placeholder="tva number" class="form-control"
+                                                                        required="required">
+                                                                </div>
+
+
+                                                                <div class="form-group">
+                                                                    <input type="text" name="txtEngineer"
+                                                                        placeholder="engineer" class="form-control"
+                                                                        required="required">
+                                                                </div>
+
+                                                                <div class="modal-footer">
+                                                                    <button class="btn btn-md btn-primary"
+                                                                        name="btnRegisterClient" class="modalButton"
+                                                                        type="submit">Add Member</button>
+                                                                    <button type="button" class="btn btn-danger"
+                                                                        data-dismiss="modal">Close</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            <!-- Bootstrap core JavaScript-->
+                            <script src="dashboard/vendor/jquery/jquery.min.js"></script>
+                            <script src="dashboard/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+                            <!-- Core plugin JavaScript-->
+                            <script src="dashboard/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+                            <!-- Page level plugin JavaScript-->
+                            <script src="dashboard/vendor/chart.js/Chart.min.js"></script>
+                            <script src="dashboard/vendor/datatables/jquery.dataTables.js"></script>
+                            <script src="dashboard/vendor/datatables/dataTables.bootstrap4.js"></script>
+
+                            <!-- Custom scripts for all pages-->
+                            <script src="dashboard/js/sb-admin.min.js"></script>
 
 </body>
 
