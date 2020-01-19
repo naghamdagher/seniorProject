@@ -40,7 +40,7 @@ include 'includes/dbConnection.php';
             </button>
 
             <!-- Navbar Search -->
-            <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-5 my-2 my-md-0">
+            <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Search for..." aria-label="Search"
                         aria-describedby="basic-addon2">
@@ -120,126 +120,49 @@ include 'includes/dbConnection.php';
               
             </ul>
 
-            <div class="container-fluid">
+
+            <!-- Table with query to fill it -->
+            <?php $sql = 'SELECT ID,name,location FROM supplier';        
+                $query = mysqli_query($con, $sql);
+							if (!$query) {
+							die('SQL Error:' . mysqli_error($con));
+						}?>
+
+            <!-- DataTables Example -->
+            <div class="card mb-3">
+                <div class="card-header">
+                    <i class="fas fa-table"></i>
+                    Data Table Example</div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                                <tr>
+                                    <th class="sorting_desc">Club Name</th>
+                                    <th class="sorting_desc">Location</th>
+                                    <th class="sorting_desc">Action</th>
+                                </tr>
+                            </thead>
+
+                            <?php while ($row = mysqli_fetch_array($query)) { ?>
+                                <tr>
+                                    <td><?php echo $row['cl_name']; ?></td>
+                                    <td><?php echo $row['cl_location']; ?></td>
+                                    <td>
+                                        <a href="" style="color:blue;"> <i class="fas fa-pen"></i></a>
+                                        <a href="club.php?idd=<?php echo $row['cl_id']; ?>" onclick="return confirm('Are you sure ?')" style="color:red;"><i class="fas fa-remove"></i></a>
+                                    </td>
+                                </tr>
+                            <?php
+                        } ?>
+                            
+                        </table>
+                    </div>
+                </div>
+                <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+            </div>
 
 
-             <!-- Breadcrumbs-->
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item">
-            <a href="#">Admin</a>
-          </li>
-          <li class="breadcrumb-item active">Data entry</li>
-        </ol>
-
- <!-- Icon Cards-->
-                <div class="row">
-          <div class="col-xl-4 col-sm-6 mb-5">
-            <div class="card text-white bg-primary o-hidden h-100">
-              <div class="card-body">
-                <div class="card-body-icon">
-                  <i class="fas fa-fw fa-users"></i>
-                </div>
-                <div class="mr-5">Clients</div>
-              </div>
-              <a class="card-footer text-white clearfix small z-1" href="#">
-                <span class="float-left">add client</span>
-                <span class="float-right">
-                  <i class="fas fa-angle-right"></i>
-                </span>
-              </a>
-            </div>
-          </div>
-          <div class="col-xl-4 col-sm-6 mb-5">
-            <div class="card text-white bg-warning o-hidden h-100">
-              <div class="card-body">
-                <div class="card-body-icon">
-                  <i class="fas fa-fw fa-briefcase"></i>
-                </div>
-                <div class="mr-5">Contractors</div>
-              </div>
-              <a class="card-footer text-white clearfix small z-1" href="#">
-                <span class="float-left">add contractor</span>
-                <span class="float-right">
-                  <i class="fas fa-angle-right"></i>
-                </span>
-              </a>
-            </div>
-          </div>
-          <div class="col-xl-4 col-sm-6 mb-5">
-            <div class="card text-white bg-success o-hidden h-100">
-              <div class="card-body">
-                <div class="card-body-icon">
-                  <i class="fas fa-fw fa-shopping-cart"></i>
-                </div>
-                <div class="mr-5">Products</div>
-              </div>
-              <a class="card-footer text-white clearfix small z-1" href="#">
-                <span class="float-left">add product</span>
-                <span class="float-right">
-                  <i class="fas fa-angle-right"></i>
-                </span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-
-        
-             <!-- Icon Cards-->
-        <div class="row">
-          <div class="col-xl-4 col-sm-6 mb-5">
-            <div class="card text-white bg-danger o-hidden h-100">
-              <div class="card-body">
-                <div class="card-body-icon">
-                  <i class="fas fa-fw fa-comments"></i>
-                </div>
-                <div class="mr-5">Stores</div>
-              </div>
-              <a class="card-footer text-white clearfix small z-1" href="#">
-                <span class="float-left">add store</span>
-                <span class="float-right">
-                  <i class="fas fa-angle-right"></i>
-                </span>
-              </a>
-            </div>
-          </div>
-          <div class="col-xl-4 col-sm-6 mb-5">
-            <div class="card text-white bg-dark o-hidden h-100">
-              <div class="card-body">
-                <div class="card-body-icon">
-                  <i class="fas fa-fw fa-list"></i>
-                </div>
-                <div class="mr-5">Payments</div>
-              </div>
-              <a class="card-footer text-white clearfix small z-1" href="#">
-                <span class="float-left">add payment</span>
-                <span class="float-right">
-                  <i class="fas fa-angle-right"></i>
-                </span>
-              </a>
-            </div>
-          </div>
-          <div class="col-xl-4 col-sm-6 mb-5">
-            <div class="card text-white bg-info o-hidden h-100">
-              <div class="card-body">
-                <div class="card-body-icon">
-                  <i class="fas fa-fw fa-shopping-cart"></i>
-                </div>
-                <div class="mr-5">User</div>
-              </div>
-              <a class="card-footer text-white clearfix small z-1" href="#">
-                <span class="float-left">add user</span>
-                <span class="float-right">
-                  <i class="fas fa-angle-right"></i>
-                </span>
-              </a>
-            </div>
-          </div>
-        
-        </div>
-
-        
-        
         </div>
 
 
@@ -257,12 +180,6 @@ include 'includes/dbConnection.php';
 
         <!-- Custom scripts for all pages-->
         <script src="dashboard/js/sb-admin.min.js"></script>
-
-
-
-
-
-
 
 </body>
 
