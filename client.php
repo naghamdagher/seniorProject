@@ -237,7 +237,7 @@ include 'includes/dbConnection.php';
                                                                 class="form-control" required="required">
                                                         </div>
                                                         <div class="form-group">
-                                                            <input name="txtAdress" class="form-control"
+                                                            <input type="text" name="txtAddress" class="form-control"
                                                                 placeholder="Address" required="required">
                                                         </div>
                                                         <div class="form-group">
@@ -252,7 +252,7 @@ include 'includes/dbConnection.php';
                                                         </div>
 
                                                         <div class="form-group">
-                                                            <input type="text" name="txtTva" placeholder="tva number"
+                                                            <input type="text" name="txtTva" placeholder="TVA number ex: 184775-601"
                                                                 class="form-control" required="required">
                                                         </div>
 

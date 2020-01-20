@@ -36,7 +36,7 @@
 if (isset($_POST["btnRegisterClient"])) {
 
 	$name = $_POST["txtName"];
-	$address = $_POST["txtAdress"];
+	$caddress = $_POST["txtAddress"];
 	$phone = $_POST["txtPhone"];
 	$email = $_POST["txtEmail"];
 	$tva_number = $_POST["txtTva"];
@@ -61,11 +61,107 @@ if (isset($_POST["btnRegisterClient"])) {
 
 
 // add User
+if (isset($_POST["btnRegisterUser"])) {
+
+	$name = $_POST["txtUsername"];
+	$password = $_POST["txtPassword"];
+	$phone = $_POST["txtPhone"];
+	$email = $_POST["txtEmail"];
+	$address = $_POST["txtAddress"];
+	$position = $_POST["txtPosition"];
+
+
+	$sql = "INSERT INTO user(username, upassword ,phone, email, uaddress, position)
+	VALUES ('" . $name . "', '" . $password . "', '" . $phone . "', '" . $email . "','" . $address . "'.'" . $position . "')";
+
+	if ($con->query($sql) === true) {
+		$message = "New record created successfully";
+		$_SESSION["success"] = $message;
+		header("location: ../user.php");
+	} else {
+		$message = "Error: " . $sql . "<br>" . $con->error;
+		$_SESSION["error"] = $message;
+		header("location: ../user.php");
+	}
+
+	$con->close();
+}
 
 ///add store
+if (isset($_POST["btnRegisterStore"])) {
+
+	$name = $_POST["txtName"];
+	$location = $_POST["txtLocation"];
+	$branch = $_POST["txtBranch"];
+	$description = $_POST["txtDescription"];
+
+
+	$sql = "INSERT INTO store(sname, slocation , branch, sdescription)
+	VALUES ('" . $name . "', '" . $location . "', '" . $branch . "', '" . $description . "')";
+
+	if ($con->query($sql) === true) {
+		$message = "New record created successfully";
+		$_SESSION["success"] = $message;
+		header("location: ../store.php");
+	} else {
+		$message = "Error: " . $sql . "<br>" . $con->error;
+		$_SESSION["error"] = $message;
+		header("location: ../store.php");
+	}
+
+	$con->close();
+}
 
 
 
 ////contractor
+if (isset($_POST["btnRegisterContractor"])) {
+
+	$name = $_POST["txtName"];
+	$address = $_POST["txtAddress"];
+	$phone = $_POST["txtPhone"];
+	$email = $_POST["txtEmail"];
+    $tva_number = $_POST["txtTva"];
+    $engineer = $_POST["txtengineer"];
+
+	$sql = "INSERT INTO contractor(cname, caddress ,phone, email, tva_number, engineer)
+	VALUES ('" . $name . "', '" . $address . "', '" . $phone . "', '" . $email . "','" . $tva_number . "','". $engineer ."')";
+
+	if ($con->query($sql) === true) {
+		$message = "New record created successfully";
+		$_SESSION["success"] = $message;
+		header("location: ../contractor.php");
+	} else {
+		$message = "Error: " . $sql . "<br>" . $con->error;
+		$_SESSION["error"] = $message;
+		header("location: ../contractor.php");
+	}
+
+	$con->close();
+}
 
 // product
+if (isset($_POST["btnRegisterProduct"])) {
+
+	$code = $_POST["txtCode"];
+	$name = $_POST["txtName"];
+	$description = $_POST["txtDescription"];
+	$unit = $_POST["txtUnit"];
+	$quantity = $_POST["txtQtt"];
+
+
+	$sql = "INSERT INTO product(p_code, pname, pdescription, p_unit, quantity_by_box)
+	VALUES ('" . $code . "', '" . $name . "', '" . $description . "', '" . $unit . "','" . $quantity . "')";
+
+	if ($con->query($sql) === true) {
+		$message = "New record created successfully";
+		$_SESSION["success"] = $message;
+		header("location: ../product.php");
+	} else {
+		$message = "Error: " . $sql . "<br>" . $con->error;
+		$_SESSION["error"] = $message;
+		header("location: ../product.php");
+	}
+
+	$con->close();
+}

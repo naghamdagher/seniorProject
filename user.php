@@ -129,7 +129,7 @@ include 'includes/dbConnection.php';
                                 <section class="content-header">
                                     <h1>
                                         <i class="fa fa-group"></i>
-                                        Store
+                                        User
                                     </h1>
                                 </section>
                             </div>
@@ -137,13 +137,13 @@ include 'includes/dbConnection.php';
 
                             <div class="container" id="member-registration-container">
                                 <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal"><i
-                                        class="fas fa-plus" style="color: white;"></i> Stores</button>
+                                        class="fas fa-plus" style="color: white;"></i> Users</button>
                             </div>
 
 
                             <!-- Table with query to fill it -->
 
-                            <?php $sql = 'SELECT s_id, sname, slocation, branch, sdescription FROM store';
+                            <?php $sql = 'SELECT u_id, username, upassword, phone, email, uaddress, position  FROM user';
                         $query = mysqli_query($con, $sql);
 
                         if (!$query) {
@@ -153,29 +153,33 @@ include 'includes/dbConnection.php';
 
                             <!-- DataTables Example -->
                             <div class="card mb-3">
-                                <div class="card-header"><i class="fas fa-table"></i> Stores List</div>
+                                <div class="card-header"><i class="fas fa-table"></i> Users List</div>
                                 <div class="card-body">
                                     <div class="table-responsive">
                                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                             <thead>
                                                 <tr>
-                                                    <th class="sorting_desc">Store Name</th>
-                                                    <th class="sorting_desc">Store Address</th>
-                                                    <th class="sorting_desc">Store Branch</th>
-                                                    <th class="sorting_desc">Store description</th>
+                                                    <th class="sorting_desc">User Name</th>
+                                                    <th class="sorting_desc">User Password</th>
+                                                    <th class="sorting_desc">User Phone number</th>
+                                                    <th class="sorting_desc">User Email</th>
+                                                    <th class="sorting_desc">User Address</th>
+                                                    <th class="sorting_desc">User position</th>
                                                 </tr>
                                             </thead>
 
                                             <?php while ($row = mysqli_fetch_array($query)) { ?>
                                             <tr>
-                                                <td><?php echo $row['sname']; ?></td>
-                                                <td><?php echo $row['slocation']; ?></td>
-                                                <td><?php echo $row['branch']; ?></td>
-                                                <td><?php echo $row['sdescription']; ?></td>
+                                                <td><?php echo $row['username']; ?></td>
+                                                <td><?php echo $row['upassword']; ?></td>
+                                                <td><?php echo $row['phone']; ?></td>
+                                                <td><?php echo $row['email']; ?></td>
+                                                <td><?php echo $row['uaddress']; ?></td>
+                                                <td><?php echo $row['position']; ?></td>
                                                 
                                                 <td>
                                                     <a href="" style="color:blue;"> <i class="fas fa-pen"></i></a>
-                                                    <a href="contractor.php?idd=<?php echo $row['s_id']; ?>"
+                                                    <a href="contractor.php?idd=<?php echo $row['u_id']; ?>"
                                                         onclick="return confirm('Are you sure ?')" style="color:red;"><i
                                                             class="fas fa-remove"></i></a>
                                                 </td>
@@ -192,7 +196,7 @@ include 'includes/dbConnection.php';
                                 <?php
                             if (isset($_GET['idd'])) {
                                 $idd = $_GET['idd'];
-                                $sql = "Delete from member where s_id='" . $idd . "'";
+                                $sql = "Delete from member where u_id='" . $idd . "'";
                                 if ($idd != '') {
                                     $query = mysqli_query($con, $sql);
                                     //header("Refresh:0; url=member.php");
@@ -219,36 +223,44 @@ include 'includes/dbConnection.php';
                         } ?>
 
 
-                                <!-- ADD Store -->
+                                <!-- ADD User -->
 
                                 <div class="modal fade" id="myModal">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="card card-register">
-                                                <div class="card-header">Add Store</div>
+                                                <div class="card-header">Add User</div>
                                                 <div class="card-body">
                                                     <form method="post" action="includes/phpScripts.php">
                                                         <div class="form-group">
-                                                            <input type="text" name="txtName" placeholder="Name"
+                                                            <input type="text" name="txtUsername" placeholder="Username"
                                                                 class="form-control" required="required">
                                                         </div>
                                                         <div class="form-group">
-                                                            <input type="text" name="txtLocation" class="form-control"
-                                                                placeholder="Location" required="required">
+                                                            <input type="text" name="txtPassword" class="form-control"
+                                                                placeholder="Password" required="required">
                                                         </div>
                                                         <div class="form-group">
-                                                            <input type="text" name="txtBranch" class="form-control"
-                                                                placeholder="Branch" required="required">
+                                                            <input type="text" name="txtPhone" class="form-control"
+                                                                placeholder="Phone" required="required">
                                                         </div>
                                                         <div class="form-group">
-                                                            <input type="text" name="txtDescription" placeholder="Description"
+                                                            <input type="text" name="txtEmail" placeholder="Email"
+                                                                class="form-control" required="required">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <input type="text" name="txtAddress" placeholder="Address"
+                                                                class="form-control" required="required">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <input type="text" name="txtPosition" placeholder="Position"
                                                                 class="form-control" required="required">
                                                         </div>
 
                                                         <div class="modal-footer">
                                                             <button class="btn btn-md btn-primary"
-                                                                name="btnRegisterStore" class="modalButton"
-                                                                type="submit">Add Store</button>
+                                                                name="btnRegisterUser" class="modalButton"
+                                                                type="submit">Add User</button>
                                                             <button type="button" class="btn btn-danger"
                                                                 data-dismiss="modal">Close</button>
                                                         </div>
