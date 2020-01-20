@@ -181,7 +181,7 @@ include 'includes/dbConnection.php';
                                                     <a href="" style="color:blue;"> <i class="fas fa-pen"></i></a>
                                                     <a href="contractor.php?idd=<?php echo $row['u_id']; ?>"
                                                         onclick="return confirm('Are you sure ?')" style="color:red;"><i
-                                                            class="fas fa-remove"></i></a>
+                                                            class="fas fa-trash"></i></a>
                                                 </td>
                                             </tr>
                                             <?php
@@ -196,7 +196,7 @@ include 'includes/dbConnection.php';
                                 <?php
                             if (isset($_GET['idd'])) {
                                 $idd = $_GET['idd'];
-                                $sql = "Delete from member where u_id='" . $idd . "'";
+                                $sql = "Delete from user where u_id='" . $idd . "'";
                                 if ($idd != '') {
                                     $query = mysqli_query($con, $sql);
                                     //header("Refresh:0; url=member.php");
@@ -204,7 +204,7 @@ include 'includes/dbConnection.php';
                             }
                             ?>
 
-                                <!-- session for add member button -->
+                                <!-- session for add user button -->
                                 <?php if (isset($_SESSION["success"])) { ?>
                                 <div class="alert alert-success">
                                     <strong>Success! </strong> <?php echo $_SESSION["success"];

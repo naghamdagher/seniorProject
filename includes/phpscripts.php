@@ -165,3 +165,27 @@ if (isset($_POST["btnRegisterProduct"])) {
 
 	$con->close();
 }
+
+// payment
+if (isset($_POST["btnSavePrint"])) {
+	$Methode_of_Payment = $_POST["cbxMethodeOfPayment"];
+	$Payment_Date = $_POST["pDate"];
+	$Subscription_number = $_POST["txtSubscription-number"];
+	$Total_Amount = $_POST["txtAmount"];
+	$Paid = $_POST["txtPaid"];
+	$Remain = $_POST["txtRemain"];
+
+	$sql = "INSERT INTO payment(mop_name,sub_id,pay_amount,pay_date) VALUES ('" . $Methode_of_Payment . "', '" . $Subscription_number . "', '" . $Paid . "','" . $Payment_Date . "')";
+
+	if ($con->query($sql) === true) {
+		$message = "New record created successfully";
+		$_SESSION["success"] = $message;
+		header("location: ../payment.php");
+	} else {
+		$message = "Error: " . $sql . "<br>" . $con->error;
+		$_SESSION["error"] = $message;
+		header("location: ../payment..php");
+	}
+
+	$con->close();
+}
