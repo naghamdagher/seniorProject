@@ -127,7 +127,7 @@ include 'includes/dbConnection.php';
                         <section class="content-header">
                             <h1>
                                 <i class="fa fa-group"></i>
-                                Paymnent
+                                Payment
                             </h1>
                         </section>
                     </div>
@@ -135,13 +135,13 @@ include 'includes/dbConnection.php';
 
                     <div class="container" id="member-registration-container">
                         <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal"><i
-                                class="fas fa-plus" style="color: white;"></i> Clients</button>
+                                class="fas fa-plus" style="color: white;"></i> Payments</button>
                     </div>
 
 
                     <!-- Table with query to fill it -->
 
-                    <?php $sql = 'SELECT c_id,cname,caddress,phone,email,tva_number,engineer FROM client';
+                    <?php $sql = 'SELECT p_id,payment_date,	transaction_ID,amount,tva,discount,total,method_of_payment, currency FROM payment';
                 $query = mysqli_query($con, $sql);
 
                 if (!$query) {
@@ -158,23 +158,32 @@ include 'includes/dbConnection.php';
 											<thead>
 												<tr>
 													<!-- Table Column Header -->
-													<th class="sorting_desc">Invoice Number</th>
-													<th class="sorting_desc">Methode of Payment</th>
-													<th class="sorting_desc">Payment Amount</th>
 													<th class="sorting_desc">Payment Date</th>
-													<th class="sorting_desc">Action</th>
+													<th class="sorting_desc">Tansaction Number</th>
+													<th class="sorting_desc">Payment Amount</th>
+													<th class="sorting_desc">Payment Tva</th>
+													<th class="sorting_desc">Payment Discount</th>
+													<th class="sorting_desc">Payment Total</th>
+													<th class="sorting_desc">Payment Method</th>
+													<th class="sorting_desc">Payment Currency</th>
 												</tr>
 											</thead>
 
 											<?php while ($row = mysqli_fetch_array($query)) { ?>
 												<tr>
-													<td><?php echo $row['pay_id']; ?></td>
-													<td><?php echo $row['mop_name']; ?></td>
-													<td><?php echo $row['pay_amount']; ?></td>
-													<td><?php echo $row['pay_date']; ?></td>
+													<td><?php echo $row['p_id']; ?></td>
+													<td><?php echo $row['payment_date']; ?></td>
+													<td><?php echo $row['transaction_ID']; ?></td>
+													<td><?php echo $row['amount']; ?></td>
+													<td><?php echo $row['tva']; ?></td>
+													<td><?php echo $row['discount']; ?></td>
+													<td><?php echo $row['total']; ?></td>
+													<td><?php echo $row['method_of_payment']; ?></td>
+													<td><?php echo $row['currency']; ?></td>
+												
 													<td>
 														<a href="" style="color:blue;"><i class="fas fa-pen"></i></a>
-														<a href="payment.php?idd=<?php echo $row['pay_id']; ?>" onclick="return confirm('Are you sure ?')" style="color:red;"><i class="fas fa-remove"></i></a>
+														<a href="payment.php?idd=<?php echo $row['p_id']; ?>" onclick="return confirm('Are you sure ?')" style="color:red;"><i class="fas fa-remove"></i></a>
 													</td>
 												</tr>
 											<?php
@@ -187,7 +196,7 @@ include 'includes/dbConnection.php';
 								<?php
 								if (isset($_GET['idd'])) {
 									$idd = $_GET['idd'];
-									$sql = "Delete from payment where pay_id='" . $idd . "'";
+									$sql = "Delete from payment where p_id='" . $idd . "'";
 									if ($idd != '') {
 										$query = mysqli_query($con, $sql);
 										//header("Refresh:0; url=payment.php");
@@ -224,14 +233,56 @@ include 'includes/dbConnection.php';
 													<div class="form-group">
 														<div class="col-md-9">
 															<label>Invoice #</label>
-															<input type="text" name="txtPayment-id" placeholder="Invoice Number" disabled="disabled" value="<?php echo $row['pay_id'] + "1"; ?>" class="form-control" required="required"> </div>
+															<input type="text" name="txtid" placeholder="Invoice Number" disabled="disabled" value="<?php echo $row['p_id'] + "1"; ?>" class="form-control" required="required"> </div>
 													</div>
 													<br><br><br>
 													<div class="form-group">
+															<div class="col-md-6">
+																<label>Payment Date</label>
+																<input type="date" name="txtDate" placeholder="Payment Date" class="form-control" required="required">
+															</div>
+														</div>
+														
+														<div class="form-group">
+															<div class="col-md-6">
+																<label>Clients</label>
+																<select class="form-control" id="cbxPackages" name="cbxPackages" style="height:40px;">	
+																</select>
+															</div>
+														</div>
+														<br><br>
+
+														<div class="form-group">
+															<div class="col-md-6">
+																<label>Amount</label>
+																<input type="text" name="txtAmount" disabled="disabled" id="txtAmount" value="total taba3 l items" placeholder="Total Amount" class="form-control" required="required">
+															</div>
+														</div>
+														<div class="form-group">
+															<div class="col-md-6">
+																<label>TVA</label>
+																<input type="text" name="txtTVA" disabled="disabled" id="txtTva" value="pre set and only admin can change" placeholder="Total Amount" class="form-control" required="required">
+															</div>
+														</div>
+														
+														
+														<div class="form-group">
+															<div class="col-md-6">
+																<label>Payment Discount</label>
+																<input type="text" name="txtDiscount" onchange="totalAmount()" id="txtDiscount" placeholder="Discount" class="form-control" >
+															</div>
+														</div>
+														<div class="form-group">
+															<div class="col-md-6">
+																<label>Total Amount</label>
+																<input type="text" name="txtTotal" disabled="disabled" id="txtTotal" placeholder="Total" class="form-control" required="required">
+															</div>
+														</div>
+														<div class="form-group">
 														<div class="col-md-6">
 															<label>Method Of Payment</label>
 															<select class="form-control" id="cbxMethodPayment" name="cbxMethodeOfPayment">
-																<option disabled="disabled" selected="selected">Methode Of Payment</option>
+																<option disabled="disabled" selected="selected">Method Of Payment</option>
 																<option value="Cash">Cash</option>
 																<option value="MasterCard">Master Card</option>
 																<option value="VisaCard">Visa Card</option>
@@ -239,20 +290,18 @@ include 'includes/dbConnection.php';
 																<option value="Amex">Amex</option>
 															</select>
 														</div>
+
 														<div class="form-group">
-															<div class="col-md-6">
-																<label>Clients</label>
-																<select class="form-control" id="cbxPackages" name="cbxPackages" style="height:40px;">
-																	
-																</select>
-															</div>
-														</div>
-														<br><br>
-														<div class="form-group">
-															<div class="col-md-6">
-																<label>Total Amount</label>
-																<input type="text" name="txtAmount" disabled="disabled" id="txtTotalAmount" value="50000" placeholder="Total Amount" class="form-control" required="required">
-															</div>
+														<div class="col-md-6">
+															<label>Currency Of Payment</label>
+															<select class="form-control" id="cbxMethodPayment" name="cbxMethodeOfPayment">
+																<option disabled="disabled" selected="selected">Currency Of Payment</option>
+																<option value="Cash">LBP</option>
+																<option value="MasterCard">USD</option>
+																<option value="VisaCard">Euro</option>
+																<option value="Check">Pound</option>
+																<option value="Amex">YUAN</option>
+															</select>
 														</div>
 														<div class="form-group">
 															<div class="col-md-6">
@@ -260,21 +309,18 @@ include 'includes/dbConnection.php';
 																<input type="text" name="txtPaid" onchange="totalAmount()" id="txtPaid" placeholder="Paid" class="form-control" required="required">
 															</div>
 														</div>
+
+													
 														<div class="form-group">
 															<div class="col-md-6">
 																<label>Remaining Amount</label>
 																<input type="text" name="txtRemain" disabled="disabled" id="txtRemain" placeholder="Remain" class="form-control" required="required">
 															</div>
 														</div>
-														<div class="form-group">
-															<div class="col-md-6">
-																<label>Payment Date</label>
-																<input type="date" name="pDate" placeholder="Payment Date" class="form-control" required="required">
-															</div>
-														</div>
+														
 
 														<div class="modal-footer">
-															<button class="btn btn-md btn-primary" name="btnRegisterMember" class="modalButton" type="submit">
+															<button class="btn btn-md btn-primary" name="btnRegisterPayment" class="modalButton" type="submit">
 																Add payment</button>
 															<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
 														</div>

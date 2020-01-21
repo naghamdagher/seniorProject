@@ -153,7 +153,7 @@ include 'includes/dbConnection.php';
 
                             <!-- DataTables Example -->
                             <div class="card mb-3">
-                                <div class="card-header"><i class="fas fa-table"></i> Member List</div>
+                                <div class="card-header"><i class="fas fa-table"></i> Client List</div>
                                 <div class="card-body">
                                     <div class="table-responsive">
                                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -180,7 +180,7 @@ include 'includes/dbConnection.php';
                                                 <td>
                                                     <a href="client.php?idd=<?php echo $row['c_id']; ?>"
                                                         onclick="return confirm('Are you sure ?')" style="color:red;"><i
-                                                            class="fas fa-user"></i></a>
+                                                            class="fas fa-trash"></i></a>
                                                 </td>
                                             </tr>
                                             <?php

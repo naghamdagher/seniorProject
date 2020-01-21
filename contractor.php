@@ -178,7 +178,7 @@ include 'includes/dbConnection.php';
                                                 <td><?php echo $row['engineer']; ?></td>
                                                 
                                                 <td>
-                                                    <a href="" style="color:blue;"> <i class="fas fa-pen"></i></a>
+                                                    
                                                     <a href="contractor.php?idd=<?php echo $row['c_id']; ?>"
                                                         onclick="return confirm('Are you sure ?')" style="color:red;"><i
                                                             class="fas fa-trash"></i></a>

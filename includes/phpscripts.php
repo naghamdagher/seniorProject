@@ -167,7 +167,7 @@ if (isset($_POST["btnRegisterProduct"])) {
 }
 
 // payment
-if (isset($_POST["btnSavePrint"])) {
+if (isset($_POST["btnRegisterPayment"])) {
 	$Methode_of_Payment = $_POST["cbxMethodeOfPayment"];
 	$Payment_Date = $_POST["pDate"];
 	$Subscription_number = $_POST["txtSubscription-number"];
@@ -189,3 +189,5 @@ if (isset($_POST["btnSavePrint"])) {
 
 	$con->close();
 }
+
+//payment_date,	transaction_ID,amount,tva,discount,total,method_of_payment, currency
