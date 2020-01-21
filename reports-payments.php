@@ -13,7 +13,7 @@ include 'includes/dbConnection.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Reports - Users</title>
+    <title>Reports - Payments</title>
 
     <link rel="stylesheet" href="style.css">
     <!-- Custom fonts for this template-->
@@ -146,13 +146,13 @@ include 'includes/dbConnection.php';
             <div id="content-wrapper">
                 <div class="container-fluid">
 
-                      <h1><i class="fa fa-group"></i> Users - Report </h1>
+                      <h1><i class="fa fa-group"></i> Payments - Report </h1>
                       <hr>
                             <div id="reports-table">
 
-                                <!------------------------------------User reports-------------------------------------->
+                                <!------------------------------------Payment reports-------------------------------------->
                                 <!-- Table with query to fill it -->
-                                <?php $sql = 'SELECT u_id,username,upassword,phone,email,uaddress, position,date_created,created_by,date_updated,updated_by FROM user';
+                                <?php $sql = 'SELECT p_id,transaction_ID,payment_date,amount,tva,discount,total,method_of_payment, currency,date_created,created_by,date_updated,updated_by FROM payment';
                                     $query = mysqli_query($con, $sql);
                                     if (!$query) {
                                     die('SQL Error:' . mysqli_error($con));
@@ -160,7 +160,7 @@ include 'includes/dbConnection.php';
 
                                 <!-- DataTables Example -->
                                 <div class="card mb-3">
-                                    <div class="card-header"><i class="fas fa-table"></i> Users List</div>
+                                    <div class="card-header"><i class="fas fa-table"></i> Payments List</div>
                                     <div class="card-body">
                                         <div class="table-responsive">
                                             <table class="table table-bordered" id="dataTable" width="100%"
@@ -169,12 +169,14 @@ include 'includes/dbConnection.php';
                                                     <tr>
                                                         <!-- Table Column Header -->
                                                         <th class="sorting_desc">ID</th>
-                                                        <th class="sorting_desc">Username</th>
-                                                        <th class="sorting_desc">Password</th>
-                                                        <th class="sorting_desc">Phone</th>
-                                                        <th class="sorting_desc">Email</th>
-                                                        <th class="sorting_desc">Address</th>
-                                                        <th class="sorting_desc">Position</th>
+                                                        <th class="sorting_desc">Trans ID</th>
+                                                        <th class="sorting_desc">Date</th>
+                                                        <th class="sorting_desc">Amount</th>
+                                                        <th class="sorting_desc">TVA</th>
+                                                        <th class="sorting_desc">Discount</th>
+                                                        <th class="sorting_desc">Total</th>
+                                                        <th class="sorting_desc">Paid</th>
+                                                        <th class="sorting_desc">Curr.</th>
                                                         <th class="sorting_desc">date_created</th>
                                                         <th class="sorting_desc">created_by</th>
                                                         <th class="sorting_desc">date_updated</th>
@@ -183,13 +185,15 @@ include 'includes/dbConnection.php';
                                                 </thead>
                                                 <?php while ($row = mysqli_fetch_array($query)) { ?>
                                                 <tr>
-                                                    <td><?php echo $row['u_id']; ?></td>
-                                                    <td><?php echo $row['username']; ?></td>
-                                                    <td><?php echo $row['upassword']; ?></td>
-                                                    <td><?php echo $row['phone']; ?></td>
-                                                    <td><?php echo $row['email']; ?></td>
-                                                    <td><?php echo $row['uaddress']; ?></td>
-                                                    <td><?php echo $row['position']; ?></td>
+                                                    <td><?php echo $row['p_id']; ?></td>
+                                                    <td><?php echo $row['transaction_ID']; ?></td>
+                                                    <td><?php echo $row['payment_date']; ?></td>
+                                                    <td><?php echo $row['amount']; ?></td>
+                                                    <td><?php echo $row['tva']; ?></td>
+                                                    <td><?php echo $row['discount']; ?></td>
+                                                    <td><?php echo $row['total']; ?></td>
+                                                    <td><?php echo $row['method_of_payment']; ?></td>
+                                                    <td><?php echo $row['currency']; ?></td>
                                                     <td><?php echo $row['date_created']; ?></td>
                                                     <td><?php echo $row['created_by']; ?></td>
                                                     <td><?php echo $row['date_updated']; ?></td>

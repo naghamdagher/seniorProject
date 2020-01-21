@@ -12,7 +12,7 @@ include 'includes/dbConnection.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Dashboard - Admin</title>
+    <title>Reports - Contractors</title>
 
 <link rel="stylesheet" href="style.css">
 <!-- Custom fonts for this template-->
@@ -68,7 +68,23 @@ include 'includes/dbConnection.php';
     </ul>
 
 </nav>
-
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                <a class="btn btn-primary" href="Ulight.php">Logout</a>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div id="wrapper">
     <!-- Sidebar -->
@@ -105,7 +121,7 @@ include 'includes/dbConnection.php';
         <li class="nav-item">
             <a class="nav-link" href="payment.php">
                 <i class="fas fa-fw fa fa-credit-card"></i>
-                <span>payment</span>
+                <span>Payment</span>
             </a>
         </li>
 
@@ -114,9 +130,93 @@ include 'includes/dbConnection.php';
                 <i class="fas fa-fw fa-user"></i>
                 <span>User</span></a>
         </li>
+        <li class="nav-item">
+                    <a class="nav-link" href="reports.php">
+                        <i class="fas fa-fw fa-flag"></i>
+                        <span>Reports</span></a>
+        </li>
 
     </ul>
 
+
+    <div id="content-wrapper">
+                <div class="container-fluid">
+
+                      <h1><i class="fa fa-group"></i> Contractors - Report </h1>
+                      <hr>
+                            <div id="reports-table">
+
+                                <!------------------------------------Contractor reports-------------------------------------->
+                                <!-- Table with query to fill it -->
+                                <?php $sql = 'SELECT c_id,cname,caddress,phone,email,tva_number,engineer,date_created,created_by,date_updated,updated_by FROM contractor';
+                                    $query = mysqli_query($con, $sql);
+                                    if (!$query) {
+                                    die('SQL Error:' . mysqli_error($con));
+                                } ?>
+
+                                <!-- DataTables Example -->
+                                <div class="card mb-3">
+                                    <div class="card-header"><i class="fas fa-table"></i> Contractors List</div>
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered" id="dataTable" width="100%"
+                                                cellspacing="0">
+                                                <thead>
+                                                    <tr>
+                                                        <!-- Table Column Header -->
+                                                        <th class="sorting_desc">ID</th>
+                                                        <th class="sorting_desc">Name</th>
+                                                        <th class="sorting_desc">Address</th>
+                                                        <th class="sorting_desc">Phone</th>
+                                                        <th class="sorting_desc">Email</th>
+                                                        <th class="sorting_desc">Tva Number</th>
+                                                        <th class="sorting_desc">Engineer</th>
+
+                                                        <th class="sorting_desc">date_created</th>
+                                                        <th class="sorting_desc">created_by</th>
+                                                        <th class="sorting_desc">date_updated</th>
+                                                        <th class="sorting_desc">updated_by</th>
+                                                    </tr>
+                                                </thead>
+                                                <?php while ($row = mysqli_fetch_array($query)) { ?>
+                                                <tr>
+                                                    <td><?php echo $row['c_id']; ?></td>
+                                                    <td><?php echo $row['cname']; ?></td>
+                                                    <td><?php echo $row['caddress']; ?></td>
+                                                    <td><?php echo $row['phone']; ?></td>
+                                                    <td><?php echo $row['email']; ?></td>
+                                                    <td><?php echo $row['tva_number']; ?></td>
+                                                    <td><?php echo $row['engineer']; ?></td>
+                                                    <td><?php echo $row['date_created']; ?></td>
+                                                    <td><?php echo $row['created_by']; ?></td>
+                                                    <td><?php echo $row['date_updated']; ?></td>
+                                                    <td><?php echo $row['updated_by']; ?></td>
+                                                </tr>
+                                                <?php
+            } ?>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                    
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+
 </div>
+
+
+</div>
+
+
+
 </body>
 </html>

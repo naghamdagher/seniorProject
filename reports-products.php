@@ -13,7 +13,7 @@ include 'includes/dbConnection.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Dashboard - Admin</title>
+    <title>Reports - Products</title>
 
     <link rel="stylesheet" href="style.css">
     <!-- Custom fonts for this template-->
@@ -82,7 +82,8 @@ include 'includes/dbConnection.php';
                             <span aria-hidden="true">×</span>
                         </button>
                     </div>
-                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.
+                    </div>
                     <div class="modal-footer">
                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                         <a class="btn btn-primary" href="Ulight.php">Logout</a>
@@ -126,7 +127,7 @@ include 'includes/dbConnection.php';
                 <li class="nav-item">
                     <a class="nav-link" href="payment.php">
                         <i class="fas fa-fw fa fa-credit-card"></i>
-                        <span>payment</span>
+                        <span>Payment</span>
                     </a>
                 </li>
 
@@ -135,31 +136,31 @@ include 'includes/dbConnection.php';
                         <i class="fas fa-fw fa-user"></i>
                         <span>User</span></a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="reports.php">
+                        <i class="fas fa-fw fa-flag"></i>
+                        <span>Reports</span></a>
+                </li>
 
-            </ul>
+         </ul>
             <div id="content-wrapper">
                 <div class="container-fluid">
 
-                      <h1>
-                                        <i class="fa fa-group"></i>
-                                        Clients - Report
-                                    </h1>
-                                
-                            <hr>
+                      <h1><i class="fa fa-group"></i> Products - Report </h1>
+                      <hr>
                             <div id="reports-table">
 
-                                <!------------------------------------Client reports-------------------------------------->
+                                <!------------------------------------Product reports-------------------------------------->
                                 <!-- Table with query to fill it -->
-                                <?php $sql = 'SELECT c_id,cname,caddress,phone,email,tva_number,engineer,date_created,created_by,date_updated,updated_by FROM client';
-$query = mysqli_query($con, $sql);
-if (!$query) {
-    die('SQL Error:' . mysqli_error($con));
-}
-?>
+                                <?php $sql = 'SELECT p_id,p_code,pname,pdescription,p_unit,quantity_by_box,date_created,created_by,date_updated,updated_by FROM product';
+                                    $query = mysqli_query($con, $sql);
+                                    if (!$query) {
+                                    die('SQL Error:' . mysqli_error($con));
+                                } ?>
 
                                 <!-- DataTables Example -->
                                 <div class="card mb-3">
-                                    <div class="card-header"><i class="fas fa-table"></i> Subscription List</div>
+                                    <div class="card-header"><i class="fas fa-table"></i> Products List</div>
                                     <div class="card-body">
                                         <div class="table-responsive">
                                             <table class="table table-bordered" id="dataTable" width="100%"
@@ -167,14 +168,12 @@ if (!$query) {
                                                 <thead>
                                                     <tr>
                                                         <!-- Table Column Header -->
-                                                        <th class="sorting_desc">Client Id</th>
-                                                        <th class="sorting_desc"> Name</th>
-                                                        <th class="sorting_desc">Address</th>
-                                                        <th class="sorting_desc">Phone</th>
-                                                        <th class="sorting_desc">Email</th>
-                                                        <th class="sorting_desc">Tva Number</th>
-                                                        <th class="sorting_desc">Engineer</th>
-
+                                                        <th class="sorting_desc">ID</th>
+                                                        <th class="sorting_desc">Code</th>
+                                                        <th class="sorting_desc">Name</th>
+                                                        <th class="sorting_desc">Description</th>
+                                                        <th class="sorting_desc">Unit</th>
+                                                        <th class="sorting_desc">Qtt/box</th>
                                                         <th class="sorting_desc">date_created</th>
                                                         <th class="sorting_desc">created_by</th>
                                                         <th class="sorting_desc">date_updated</th>
@@ -183,13 +182,12 @@ if (!$query) {
                                                 </thead>
                                                 <?php while ($row = mysqli_fetch_array($query)) { ?>
                                                 <tr>
-                                                    <td><?php echo $row['c_id']; ?></td>
-                                                    <td><?php echo $row['cname']; ?></td>
-                                                    <td><?php echo $row['caddress']; ?></td>
-                                                    <td><?php echo $row['phone']; ?></td>
-                                                    <td><?php echo $row['email']; ?></td>
-                                                    <td><?php echo $row['tva_number']; ?></td>
-                                                    <td><?php echo $row['engineer']; ?></td>
+                                                    <td><?php echo $row['p_id']; ?></td>
+                                                    <td><?php echo $row['p_code']; ?></td>
+                                                    <td><?php echo $row['pname']; ?></td>
+                                                    <td><?php echo $row['pdescription']; ?></td>
+                                                    <td><?php echo $row['p_unit']; ?></td>
+                                                    <td><?php echo $row['quantity_by_box']; ?></td>
                                                     <td><?php echo $row['date_created']; ?></td>
                                                     <td><?php echo $row['created_by']; ?></td>
                                                     <td><?php echo $row['date_updated']; ?></td>
@@ -203,16 +201,11 @@ if (!$query) {
 
                                 </div>
                             </div>
-
-                    </section>
-
-
-
-
-
                 </div>
             </div>
         </div>
+        </div>
+</div>
 </body>
 
 </html>

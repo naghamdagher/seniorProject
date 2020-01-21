@@ -125,7 +125,7 @@ include 'includes/dbConnection.php';
                 <li class="nav-item">
                     <a class="nav-link" href="payment.php">
                         <i class="fas fa-fw fa fa-credit-card"></i>
-                        <span>Payment</span>
+                        <span>payment</span>
                     </a>
                 </li>
 
@@ -145,8 +145,8 @@ include 'includes/dbConnection.php';
             <div class="container-fluid">
 
 
-             <!-- Breadcrumbs-->
-        <ol class="breadcrumb">
+ <!-- Breadcrumbs-->
+ <ol class="breadcrumb">
           <li class="breadcrumb-item">
             <a href="#">Admin</a>
           </li>

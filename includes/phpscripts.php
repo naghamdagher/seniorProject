@@ -168,14 +168,18 @@ if (isset($_POST["btnRegisterProduct"])) {
 
 // payment
 if (isset($_POST["btnRegisterPayment"])) {
+	
+	$Payment_Date = $_POST["txtDate"];
+	$Transaction_ID = $_POST["txtid"];
+	$Amount = $_POST["txtAmount"];
+	$TVA = $_POST["txtTVA"];
+	$Discount = $_POST["txtDiscount"];
+	$Total_Amount = $_POST["txtTotal"];
 	$Methode_of_Payment = $_POST["cbxMethodeOfPayment"];
-	$Payment_Date = $_POST["pDate"];
-	$Subscription_number = $_POST["txtSubscription-number"];
-	$Total_Amount = $_POST["txtAmount"];
-	$Paid = $_POST["txtPaid"];
-	$Remain = $_POST["txtRemain"];
+	$Currency =$_POST["cbxCurrencyOfPayment"];
 
-	$sql = "INSERT INTO payment(mop_name,sub_id,pay_amount,pay_date) VALUES ('" . $Methode_of_Payment . "', '" . $Subscription_number . "', '" . $Paid . "','" . $Payment_Date . "')";
+	$sql = "INSERT INTO payment(payment_date ,transaction_ID,amount,tva, discount, total, method_of_payment, currency)
+	 VALUES ('" . $Payment_Date . "', '" . $Transaction_ID . "', '" . $Amount . "','" . $TVA . "','" . $Discount . "','" . $Total_Amount . "','" . $Methode_of_Payment . "','" . $Currency . "')";
 
 	if ($con->query($sql) === true) {
 		$message = "New record created successfully";
@@ -190,4 +194,3 @@ if (isset($_POST["btnRegisterPayment"])) {
 	$con->close();
 }
 
-//payment_date,	transaction_ID,amount,tva,discount,total,method_of_payment, currency

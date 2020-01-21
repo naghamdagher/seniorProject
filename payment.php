@@ -68,7 +68,23 @@ include 'includes/dbConnection.php';
     </ul>
 
 </nav>
-
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                <a class="btn btn-primary" href="Ulight.php">Logout</a>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div id="wrapper">
     <!-- Sidebar -->
@@ -105,7 +121,7 @@ include 'includes/dbConnection.php';
         <li class="nav-item">
             <a class="nav-link" href="payment.php">
                 <i class="fas fa-fw fa fa-credit-card"></i>
-                <span>payment</span>
+                <span>Payment</span>
             </a>
         </li>
 
@@ -115,22 +131,23 @@ include 'includes/dbConnection.php';
                 <span>User</span></a>
         </li>
 
+		<li class="nav-item">
+            <a class="nav-link" href="reports.php">
+                <i class="fas fa-fw fa-flag"></i>
+                <span>Reports</span></a>
+        </li>
+
     </ul>
 
     <div id="content-wrapper">
         <div class="container-fluid">
 
             <section class="content">
-                <br>
-                <div class="col-md-12 box box-default">
-                    <div class="box-header">
-                        <section class="content-header">
-                            <h1>
+              
+                <div class="col-md-12 box box-default">  <h1>
                                 <i class="fa fa-group"></i>
                                 Payment
                             </h1>
-                        </section>
-                    </div>
                     <hr>
 
                     <div class="container" id="member-registration-container">
@@ -171,7 +188,7 @@ include 'includes/dbConnection.php';
 
 											<?php while ($row = mysqli_fetch_array($query)) { ?>
 												<tr>
-													<td><?php echo $row['p_id']; ?></td>
+													
 													<td><?php echo $row['payment_date']; ?></td>
 													<td><?php echo $row['transaction_ID']; ?></td>
 													<td><?php echo $row['amount']; ?></td>
@@ -182,8 +199,9 @@ include 'includes/dbConnection.php';
 													<td><?php echo $row['currency']; ?></td>
 												
 													<td>
-														<a href="" style="color:blue;"><i class="fas fa-pen"></i></a>
-														<a href="payment.php?idd=<?php echo $row['p_id']; ?>" onclick="return confirm('Are you sure ?')" style="color:red;"><i class="fas fa-remove"></i></a>
+														<a href="payment.php?idd=<?php echo $row['p_id']; ?>"
+                                                        onclick="return confirm('Are you sure ?')" style="color:red;"><i
+                                                            class="fas fa-trash"></i></a>
 													</td>
 												</tr>
 											<?php
@@ -233,7 +251,8 @@ include 'includes/dbConnection.php';
 													<div class="form-group">
 														<div class="col-md-9">
 															<label>Invoice #</label>
-															<input type="text" name="txtid" placeholder="Invoice Number" disabled="disabled" value="<?php echo $row['p_id'] + "1"; ?>" class="form-control" required="required"> </div>
+															<input type="text" name="txtid" placeholder="Invoice Number" disabled="disabled" 
+															value="<?php echo $row['p_id'] + "1"; ?>" class="form-control" required="required"> </div>
 													</div>
 													<br><br><br>
 													<div class="form-group">
@@ -260,8 +279,8 @@ include 'includes/dbConnection.php';
 														</div>
 														<div class="form-group">
 															<div class="col-md-6">
-																<label>TVA</label>
-																<input type="text" name="txtTVA" disabled="disabled" id="txtTva" value="pre set and only admin can change" placeholder="Total Amount" class="form-control" required="required">
+																<label>TVA %</label>
+																<input type="text" name="txtTVA" disabled="disabled" id="txtTva" value="pre set by admin" placeholder="Total Amount" class="form-control" required="required">
 															</div>
 														</div>
 														
@@ -294,13 +313,13 @@ include 'includes/dbConnection.php';
 														<div class="form-group">
 														<div class="col-md-6">
 															<label>Currency Of Payment</label>
-															<select class="form-control" id="cbxMethodPayment" name="cbxMethodeOfPayment">
+															<select class="form-control" id="cbxCurrencyPayment" name="cbxCurrencyOfPayment">
 																<option disabled="disabled" selected="selected">Currency Of Payment</option>
-																<option value="Cash">LBP</option>
-																<option value="MasterCard">USD</option>
-																<option value="VisaCard">Euro</option>
-																<option value="Check">Pound</option>
-																<option value="Amex">YUAN</option>
+																<option value="LBP">LBP</option>
+																<option value="USD">USD</option>
+																<option value="Euro">Euro</option>
+																<option value="Pound">Pound</option>
+																<option value="YUAN">YUAN</option>
 															</select>
 														</div>
 														<div class="form-group">
