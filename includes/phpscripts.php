@@ -147,11 +147,12 @@ if (isset($_POST["btnRegisterProduct"])) {
 	$name = $_POST["txtName"];
 	$description = $_POST["txtDescription"];
 	$unit = $_POST["txtUnit"];
+	$price = $_POST["txtPrice"];
 	$quantity = $_POST["txtQtt"];
 
 
-	$sql = "INSERT INTO product(p_code, pname, pdescription, p_unit, quantity_by_box)
-	VALUES ('" . $code . "', '" . $name . "', '" . $description . "', '" . $unit . "','" . $quantity . "')";
+	$sql = "INSERT INTO product(p_code, pname, pdescription, p_unit,price,quantity_by_box)
+	VALUES ('" . $code . "', '" . $name . "', '" . $description . "', '" . $unit . "','" . $price . "','" . $quantity . "')";
 
 	if ($con->query($sql) === true) {
 		$message = "New record created successfully";

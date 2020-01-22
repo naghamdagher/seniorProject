@@ -14,7 +14,7 @@ include 'includes/dbConnection.php';
     <title>U-light management system</title>
     <link rel="stylesheet" href="scriptfiles/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
-
+    
 </head>
 <body>
 
@@ -352,10 +352,12 @@ include 'includes/dbConnection.php';
     <div id="map"></div>
 
  </div>
+
+  <!--Division footer -->
     <div class="footer">
     
       <div class="footer-copyright text-center py-3">
-        <a href="Ulight.php" style="color: black;"> U-light</a> © 2020 
+       <a href="Ulight.php" style="color: black;"> U-light</a> © 2020 
       </div>
      
     </div>
@@ -389,8 +391,6 @@ include 'includes/dbConnection.php';
     <script src="scriptfiles/jquery-3.3.1.min.js"></script>
     <script src="scriptfiles/script.js"></script>
  
+ 
 </body>
-
-
-
 </html>

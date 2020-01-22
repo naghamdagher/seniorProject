@@ -11,7 +11,7 @@ include 'includes/dbConnection.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Admin - product</title>
+    <title>Dashboard - Admin</title>
 
     <link rel="stylesheet" href="style.css">
     <!-- Custom fonts for this template-->
@@ -86,19 +86,42 @@ include 'includes/dbConnection.php';
     </div>
 </div>
 </div>
-</div>
+</div> 
+
 
         <div id="wrapper">
             <!-- Sidebar -->
             <ul class="sidebar navbar-nav">
 
-                <li class="nav-item">
-                    <a class="nav-link" href="client.php">
-                        <i class="fas fa-fw fa fa-users"></i>
-                        <span>Client</span>
+            <li class="nav-item">
+                    <a class="nav-link" href="purchase.php">
+                        <i class="fas fa-fw fa fa-truck"></i>
+                        <span>Purchase</span>
                     </a>
                 </li>
-
+                <li class="nav-item">
+                    <a class="nav-link" href="transaction.php">
+                        <i class="fas fa-fw fa fa-industry" ></i>
+                        <span>Transaction</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="payment.php">
+                        <i class="fas fa-fw fa fa-credit-card"></i>
+                        <span>Payment</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="reports.php">
+                        <i class="fas fa-fw fa-flag"></i>
+                        <span>Reports</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="price.php">
+                        <i class="fas fa-fw fa fa-balance-scale"></i>
+                        <span>Prices</span>
+                    </a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="contractor.php">
                         <i class="fas fa-fw fa fa-briefcase"></i>
@@ -121,21 +144,16 @@ include 'includes/dbConnection.php';
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="payment.php">
-                        <i class="fas fa-fw fa fa-credit-card"></i>
-                        <span>Payment</span>
-                    </a>
-                </li>
-
-                <li class="nav-item">
                     <a class="nav-link" href="user.php">
                         <i class="fas fa-fw fa-user"></i>
                         <span>User</span></a>
                 </li>
+                
                 <li class="nav-item">
-                    <a class="nav-link" href="reports.php">
-                        <i class="fas fa-fw fa-flag"></i>
-                        <span>Reports</span></a>
+                    <a class="nav-link" href="client.php">
+                        <i class="fas fa-fw fa fa-users"></i>
+                        <span>Client</span>
+                    </a>
                 </li>
 
             </ul>
@@ -144,22 +162,20 @@ include 'includes/dbConnection.php';
                 <div class="container-fluid">
 
                     <section class="content">
-                   
                         <div class="col-md-12 box box-default"> <h1>
                                         <i class="fa fa-group"></i>
-                                        Product
-                                    </h1>
-                            <hr>
+                                        Price List
+                                    </h1> <hr>
 
                             <div class="container" id="member-registration-container">
                                 <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal"><i
-                                        class="fas fa-plus" style="color: white;"></i> Products</button>
+                                        class="fas fa-plus" style="color: white;"></i> Price List</button>
                             </div>
 
 
                             <!-- Table with query to fill it -->
 
-                            <?php $sql = 'SELECT p_id,p_code,pname,pdescription,p_unit,price,quantity_by_box FROM product';
+                            <?php $sql = 'SELECT c_id,cname,caddress,phone,email,tva_number,engineer FROM client';
                         $query = mysqli_query($con, $sql);
 
                         if (!$query) {
@@ -169,33 +185,32 @@ include 'includes/dbConnection.php';
 
                             <!-- DataTables Example -->
                             <div class="card mb-3">
-                                <div class="card-header"><i class="fas fa-table"></i> Product List</div>
+                                <div class="card-header"><i class="fas fa-table"></i> Price List</div>
                                 <div class="card-body">
                                     <div class="table-responsive">
                                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                             <thead>
                                                 <tr>
-                                                    <th class="sorting_desc">Product Code</th>
-                                                    <th class="sorting_desc">Product Name</th>
-                                                    <th class="sorting_desc">Product Description</th>
-                                                    <th class="sorting_desc">Unit</th>
-                                                    <th class="sorting_desc">Price</th>
-                                                    <th class="sorting_desc">Quantity by Box</th>
+                                                    <th class="sorting_desc">Client Name</th>
+                                                    <th class="sorting_desc">Address</th>
+                                                    <th class="sorting_desc">Phone</th>
+                                                    <th class="sorting_desc">Email</th>
+                                                    <th class="sorting_desc">Tva Number</th>
+                                                    <th class="sorting_desc">Engineer</th>
                                                 </tr>
                                             </thead>
 
                                             <?php while ($row = mysqli_fetch_array($query)) { ?>
                                             <tr>
-                                                <td><?php echo $row['p_code']; ?></td>
-                                                <td><?php echo $row['pname']; ?></td>
-                                                <td><?php echo $row['pdescription']; ?></td>
-                                                <td><?php echo $row['p_unit']; ?></td>
-                                                <td><?php echo $row['price']; ?></td>
-                                                <td><?php echo $row['quantity_by_box']; ?></td>
-                                                
+                                                <td><?php echo $row['cname']; ?></td>
+                                                <td><?php echo $row['caddress']; ?></td>
+                                                <td><?php echo $row['phone']; ?></td>
+                                                <td><?php echo $row['email']; ?></td>
+                                                <td><?php echo $row['tva_number']; ?></td>
+                                                <td><?php echo $row['engineer']; ?></td>
+
                                                 <td>
-                                                   
-                                                    <a href="product.php?idd=<?php echo $row['p_id']; ?>"
+                                                    <a href="client.php?idd=<?php echo $row['c_id']; ?>"
                                                         onclick="return confirm('Are you sure ?')" style="color:red;"><i
                                                             class="fas fa-trash"></i></a>
                                                 </td>
@@ -212,7 +227,7 @@ include 'includes/dbConnection.php';
                                 <?php
                             if (isset($_GET['idd'])) {
                                 $idd = $_GET['idd'];
-                                $sql = "Delete from product where p_id='" . $idd . "'";
+                                $sql = "Delete from price_list where p_id='" . $idd . "'";
                                 if ($idd != '') {
                                     $query = mysqli_query($con, $sql);
                                     //header("Refresh:0; url=member.php");
@@ -220,7 +235,7 @@ include 'includes/dbConnection.php';
                             }
                             ?>
 
-                                <!-- session for add product button -->
+                                <!-- session for add clien button -->
                                 <?php if (isset($_SESSION["success"])) { ?>
                                 <div class="alert alert-success">
                                     <strong>Success! </strong> <?php echo $_SESSION["success"];
@@ -239,46 +254,49 @@ include 'includes/dbConnection.php';
                         } ?>
 
 
-                                <!-- ADD Product -->
+                                <!-- ADD Product PriceList -->
 
                                 <div class="modal fade" id="myModal">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="card card-register">
-                                                <div class="card-header">Add Product</div>
+                                                <div class="card-header">Add New Product Price</div>
                                                 <div class="card-body">
                                                     <form method="post" action="includes/phpScripts.php">
                                                         <div class="form-group">
-                                                            <input type="text" name="txtCode" placeholder="Code"
+                                                            <input type="text" name="txtName" placeholder="Name"
                                                                 class="form-control" required="required">
                                                         </div>
                                                         <div class="form-group">
-                                                            <input type="text" name="txtName" class="form-control"
-                                                                placeholder="Name" required="required">
+                                                            <input type="text" name="txtAddress" class="form-control"
+                                                                placeholder="Address" required="required">
                                                         </div>
                                                         <div class="form-group">
-                                                            <input type="text" name="txtDescription" placeholder="Description"
+                                                            <input type="text" name="txtPhone" placeholder="Telephone"
+                                                                class="form-control" required="required">
+                                                        </div>
+                                                     
+
+                                                        <div class="form-group">
+                                                            <input type="email" name="txtEmail" placeholder="Email"
                                                                 class="form-control" required="required">
                                                         </div>
 
                                                         <div class="form-group">
-                                                            <input type="text" name="txtUnit" placeholder="Unit"
+                                                            <input type="text" name="txtTva" placeholder="TVA number ex: 184775-601"
                                                                 class="form-control" required="required">
                                                         </div>
+
+
                                                         <div class="form-group">
-                                                            <input type="text" name="txtPrice" placeholder="Price"
-                                                                class="form-control" required="required">
-                                                        </div>
-                                                        
-                                                        <div class="form-group">
-                                                            <input type="number" min="1" name="txtQtt" placeholder="Quantity by unit/box"
+                                                            <input type="text" name="txtEngineer" placeholder="engineer"
                                                                 class="form-control" required="required">
                                                         </div>
 
                                                         <div class="modal-footer">
                                                             <button class="btn btn-md btn-primary"
-                                                                name="btnRegisterProduct" class="modalButton"
-                                                                type="submit">Add Product</button>
+                                                                name="btnRegisterClient" class="modalButton"
+                                                                type="submit">Add Client</button>
                                                             <button type="button" class="btn btn-danger"
                                                                 data-dismiss="modal">Close</button>
                                                         </div>
