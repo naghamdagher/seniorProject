@@ -89,52 +89,69 @@ include 'includes/dbConnection.php';
 <div id="wrapper">
     <!-- Sidebar -->
     <ul class="sidebar navbar-nav">
-
-        <li class="nav-item">
-            <a class="nav-link" href="client.php">
-                <i class="fas fa-fw fa fa-users"></i>
-                <span>Client</span>
-            </a>
-        </li>
-
-        <li class="nav-item">
-            <a class="nav-link" href="contractor.php">
-                <i class="fas fa-fw fa fa-briefcase"></i>
-                <span>Contractor</span>
-            </a>
-        </li>
-
-        <li class="nav-item">
-            <a class="nav-link" href="product.php">
-                <i class="fas fa-fw fa fa-archive"></i>
-                <span>Product</span>
-            </a>
-        </li>
-
-        <li class="nav-item">
-            <a class="nav-link" href="store.php">
-                <i class="fas fa-fw fa fa-shopping-cart"></i>
-                <span>Store</span>
-            </a>
-        </li>
-
-        <li class="nav-item">
-            <a class="nav-link" href="payment.php">
-                <i class="fas fa-fw fa fa-credit-card"></i>
-                <span>Payment</span>
-            </a>
-        </li>
-
-        <li class="nav-item">
-            <a class="nav-link" href="user.php">
-                <i class="fas fa-fw fa-user"></i>
-                <span>User</span></a>
-        </li>
-        <li class="nav-item">
+    <li class="nav-item">
+                    <a class="nav-link" href="purchase.php">
+                        <i class="fas fa-fw fa fa-truck"></i>
+                        <span>Purchase</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="transaction.php">
+                        <i class="fas fa-fw fa fa-industry" ></i>
+                        <span>Transaction</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="payment.php">
+                        <i class="fas fa-fw fa fa-credit-card"></i>
+                        <span>Payment</span>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="reports.php">
                         <i class="fas fa-fw fa-flag"></i>
                         <span>Reports</span></a>
-        </li>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="price.php">
+                        <i class="fas fa-fw fa fa-tag"></i>
+                        <span>Prices</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contractor.php">
+                        <i class="fas fa-fw fa fa-briefcase"></i>
+                        <span>Contractor</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="product.php">
+                        <i class="fas fa-fw fa fa-archive"></i>
+                        <span>Product</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="store.php">
+                        <i class="fas fa-fw fa fa-shopping-cart"></i>
+                        <span>Store</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="user.php">
+                        <i class="fas fa-fw fa-user"></i>
+                        <span>User</span></a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="client.php">
+                        <i class="fas fa-fw fa fa-users"></i>
+                        <span>Client</span>
+                    </a>
+                </li>
+
 
     </ul>
 

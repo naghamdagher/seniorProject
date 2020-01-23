@@ -72,7 +72,7 @@ if (isset($_POST["btnRegisterUser"])) {
 
 
 	$sql = "INSERT INTO user(username, upassword ,phone, email, uaddress, position)
-	VALUES ('" . $name . "', '" . $password . "', '" . $phone . "', '" . $email . "','" . $address . "'.'" . $position . "')";
+	VALUES ('" . $name . "', '" . $password . "', '" . $phone . "', '" . $email . "','" . $address . "','" . $position . "')";
 
 	if ($con->query($sql) === true) {
 		$message = "New record created successfully";
@@ -189,9 +189,88 @@ if (isset($_POST["btnRegisterPayment"])) {
 	} else {
 		$message = "Error: " . $sql . "<br>" . $con->error;
 		$_SESSION["error"] = $message;
-		header("location: ../payment..php");
+		header("location: ../payment.php");
 	}
 
 	$con->close();
 }
 
+
+// price list header
+if (isset($_POST["btnRegisterPriceList"])) {
+	
+	$Contractor = $_POST["txtContractor"];
+	$Year = $_POST["txtYear"];
+	$Version = $_POST["txtVersion"];
+	$Active = $_POST["txtActive"];
+	$Name = $_POST["txtName"];
+	$Description = $_POST["txtDescription"];
+
+	$sql = "INSERT INTO price_list_header(contractor ,lyear,lversion,l_active, lname, ldescription)
+	 VALUES ('" . $Contractor . "', '" . $Year . "', '" . $Version . "','" . $Active . "','" . $Name . "','" . $Description . "')";
+
+	if ($con->query($sql) === true) {
+		$message = "New record created successfully";
+		$_SESSION["success"] = $message;
+		header("location: ../price.php");
+	} else {
+		$message = "Error: " . $sql . "<br>" . $con->error;
+		$_SESSION["error"] = $message;
+		header("location: ../price..php");
+	}
+
+	$con->close();
+}
+
+
+// product price 
+if (isset($_POST["btnRegisterProductPrice"])) {
+	
+	$Product_ID = $_POST["txtID"];
+	$Product = $_POST["txtName"];
+	$Description = $_POST["txtDescription"];
+	$Price = $_POST["txtPrice"];
+
+	$sql = "INSERT INTO price_list(product_price_ID ,product_price_name,product_price_description,price)
+	 VALUES ('" . $Product_ID . "', '" . $Product . "', '" . $Description . "','" . $Price . "')";
+
+	if ($con->query($sql) === true) {
+		$message = "New record created successfully";
+		$_SESSION["success"] = $message;
+		header("location: ../price.php");
+	} else {
+		$message = "Error: " . $sql . "<br>" . $con->error;
+		$_SESSION["error"] = $message;
+		header("location: ../price..php");
+	}
+
+	$con->close();
+}
+
+
+// add in transaction
+if (isset($_POST["btnaddItem"])) {
+	
+	$Product_ID = $_POST["txtID"];
+	$Product = $_POST["txtName"];
+	$Description = $_POST["txtDescription"];
+	$Price = $_POST["txtPrice"];
+	$Qtt = $_GET["txtQtt"];
+	$Total = $Price *$Qtt;
+
+	$sql = "INSERT INTO ttransaction(product_list_price_ID ,product_name,product_description,product_quantity,
+	product_price,ttotal	)
+	 VALUES ('" . $Product_ID . "', '" . $Product . "', '" . $Description . "','" . $Price . "','" . $Qtt . "','" . $Total . "')";
+
+	if ($con->query($sql) === true) {
+		$message = "New record created successfully";
+		$_SESSION["success"] = $message;
+		header("location: ../invoice.php");
+	} else {
+		$message = "Error: " . $sql . "<br>" . $con->error;
+		$_SESSION["error"] = $message;
+		header("location: ../invoice..php");
+	}
+
+	$con->close();
+}

@@ -118,7 +118,7 @@ include 'includes/dbConnection.php';
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="price.php">
-                        <i class="fas fa-fw fa fa-balance-scale"></i>
+                        <i class="fas fa-fw fa fa-tag"></i>
                         <span>Prices</span>
                     </a>
                 </li>
@@ -155,6 +155,7 @@ include 'includes/dbConnection.php';
                         <span>Client</span>
                     </a>
                 </li>
+
 
             </ul>
 

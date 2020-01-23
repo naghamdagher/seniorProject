@@ -92,7 +92,7 @@ include 'includes/dbConnection.php';
             <!-- Sidebar -->
             <ul class="sidebar navbar-nav">
 
-            <li class="nav-item">
+             <li class="nav-item">
                     <a class="nav-link" href="purchase.php">
                         <i class="fas fa-fw fa fa-truck"></i>
                         <span>Purchase</span>
@@ -154,64 +154,97 @@ include 'includes/dbConnection.php';
                         <span>Client</span>
                     </a>
                 </li>
-
-
             </ul>
 
-            <div id="content-wrapper">
-                <div class="container-fluid">
 
-                    <section class="content">
-                   
-                        <div class="col-md-12 box box-default">
-                                    <h1>
-                                        <i class="fa fa-group"></i>
-                                        Store
-                                    </h1>
-                         
-                            <hr>
-
-                            <div class="container" id="member-registration-container">
-                                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal"><i
-                                        class="fas fa-plus" style="color: white;"></i> Stores</button>
+        <div class="card mb-3">
+            <div class="card-header">
+                               
+                               
+                                
+                            <div id="invoice-top">
+                                <div class="logo"></div>
+                                <div class="info">
+                                <h2>U-light </h2>
+                                <p> since868@gmail.com </br> 289-335-6503</br>Bteghrine-MurrBuilding </p>
+                                </div>
+                                <!--End Info-->
+                                <div class="title">
+                                <h1>Invoice <span id="invnumber"> </span></h1>
+                                <h6>Date:</br><span id="invdate">
+                                 <?php $now = new DateTime();
+                                 echo $now->format('Y-m-d H:i:s');  ?> </span></h6>
+                                </div><!--End Title-->
                             </div>
+                            <!--End InvoiceTop-->
+                <div id="invoice-mid">
+                        <div class="clientlogo"></div>
+                        <div class="info">
+                        <h2>BUS</h2>
+                        <p>Butec@utility-services.com</br>2640727-601</br> Mkalles Bus building</p>
+                         </div>
 
+                            <div id="project">
+                            <p id="invlocation"></p>
+                            </div>   
 
-                            <!-- Table with query to fill it -->
+                </div><!--End Invoice Mid-->
 
-                            <?php $sql = 'SELECT s_id, sname, slocation, branch, sdescription FROM store';
+                 <!-- Table with query to fill it trans header -->
+
+                 <?php $sql = 'SELECT t_id,subcontractor_ID,client_ID,pdescription,p_unit,price FROM transaction_header';
                         $query = mysqli_query($con, $sql);
 
                         if (!$query) {
                             die('SQL Error:' . mysqli_error($con));
                         }
                         ?>
+            </div>
 
-                            <!-- DataTables Example -->
-                            <div class="card mb-3">
-                                <div class="card-header"><i class="fas fa-table"></i> Stores List</div>
+                 <!-- Table with query to fill it transaction -->
+
+                 <?php $sql = 'SELECT t_id,product_list_price_ID,product_name,product_description,product_price FROM ttransaction';
+                        $query = mysqli_query($con, $sql);
+
+                        if (!$query) {
+                            die('SQL Error:' . mysqli_error($con));
+                        }
+                        ?>
+            </div>
+
                                 <div class="card-body">
                                     <div class="table-responsive">
-                                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                            <thead>
-                                                <tr>
-                                                    <th class="sorting_desc">Store Name</th>
-                                                    <th class="sorting_desc">Store Address</th>
-                                                    <th class="sorting_desc">Store Branch</th>
-                                                    <th class="sorting_desc">Store description</th>
-                                                </tr>
-                                            </thead>
-
-                                            <?php while ($row = mysqli_fetch_array($query)) { ?>
+                                    <div id="invoiceholder">
+                                    <div id="invoice" class="effect2">
+                                    <div id="invoice-bot">
+      
+      <div id="table" class="table-responsive" >
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <thead>
+          <tr class="tabletitle">
+            <td class="sorting_desc"><h2>Code</h2></td>
+            <td class="sorting_desc"><h2>Product/ Service</h2></td>
+            <td class="sorting_desc"><h2>Description</h2></td>
+            <td class="sorting_desc"><h2>Unit</h2></td>
+            <td class="sorting_desc"><h2>Qtty</h2></td>
+            <td class="sorting_desc"><h2>Price</h2></td>
+            <td class="sorting_desc"><h2>Total</h2></td>
+          </tr>
+          </thead>
+         
+          
+          <?php while ($row = mysqli_fetch_array($query)) { ?>
                                             <tr>
-                                                <td><?php echo $row['sname']; ?></td>
-                                                <td><?php echo $row['slocation']; ?></td>
-                                                <td><?php echo $row['branch']; ?></td>
-                                                <td><?php echo $row['sdescription']; ?></td>
+                                                <td><?php echo $row['product_price_ID']; ?></td>
+                                                <td><?php echo $row['product_price_name']; ?></td>
+                                                <td><?php echo $row['product_price_description']; ?></td>
+                                                <td><?php echo $row['price']; ?></td>
+                                                <td><?php echo $row["quantity"]; ?></td>
+                                                <td><?php echo $row['total']; ?></td>
                                                 
+
                                                 <td>
-                                                  
-                                                    <a href="store.php?idd=<?php echo $row['s_id']; ?>"
+                                                    <a href="price.php?idd=<?php echo $row['p_id']; ?>"
                                                         onclick="return confirm('Are you sure ?')" style="color:red;"><i
                                                             class="fas fa-trash"></i></a>
                                                 </td>
@@ -220,15 +253,19 @@ include 'includes/dbConnection.php';
                         } ?>
 
                                         </table>
+      </div><!--End Table-->
+      </div><!--End InvoiceBot-->
+  </div><!--End Invoice-->
+</div><!-- End Invoice Holder-->
+
                                     </div>
                                 </div>
 
-
-                                <!-- Delete Query -->
-                                <?php
+  <!-- Delete Query -->
+  <?php
                             if (isset($_GET['idd'])) {
                                 $idd = $_GET['idd'];
-                                $sql = "Delete from store where s_id='" . $idd . "'";
+                                $sql = "Delete from ttransaction where t_id='" . $idd . "'";
                                 if ($idd != '') {
                                     $query = mysqli_query($con, $sql);
                                     //header("Refresh:0; url=member.php");
@@ -236,7 +273,7 @@ include 'includes/dbConnection.php';
                             }
                             ?>
 
-                                <!-- session for add store button -->
+                                <!-- session for add product_price button -->
                                 <?php if (isset($_SESSION["success"])) { ?>
                                 <div class="alert alert-success">
                                     <strong>Success! </strong> <?php echo $_SESSION["success"];
@@ -255,36 +292,50 @@ include 'includes/dbConnection.php';
                         } ?>
 
 
-                                <!-- ADD Store -->
+            
 
-                                <div class="modal fade" id="myModal">
+
+
+
+                                <!-- ADD Item -->
+
+                                <div class="modal fade" id="my2Modal">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="card card-register">
-                                                <div class="card-header">Add Store</div>
+                                                <div class="card-header">Add New Item</div>
                                                 <div class="card-body">
                                                     <form method="post" action="includes/phpScripts.php">
                                                         <div class="form-group">
-                                                            <input type="text" name="txtName" placeholder="Name"
+                                                            <input type="text" name="txtID" placeholder="Product ID"
                                                                 class="form-control" required="required">
                                                         </div>
                                                         <div class="form-group">
-                                                            <input type="text" name="txtLocation" class="form-control"
-                                                                placeholder="Location" required="required">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <input type="text" name="txtBranch" class="form-control"
-                                                                placeholder="Branch" required="required">
+                                                            <input type="text" name="txtName" class="form-control"
+                                                                placeholder="Product" required="required">
                                                         </div>
                                                         <div class="form-group">
                                                             <input type="text" name="txtDescription" placeholder="Description"
                                                                 class="form-control" required="required">
                                                         </div>
 
+                                                        <div class="form-group">
+                                                            <input type="text" name="txtPrice" placeholder="Price"
+                                                                class="form-control" required="required">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <input type="text" name="txtQtt" placeholder="Quantity"
+                                                                class="form-control" required="required">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <input type="text" name="txtTotal" placeholder="Total"
+                                                                class="form-control" required="required">
+                                                        </div>
+
                                                         <div class="modal-footer">
                                                             <button class="btn btn-md btn-primary"
-                                                                name="btnRegisterStore" class="modalButton"
-                                                                type="submit">Add Store</button>
+                                                                name="btnaddItem" class="modalButton"
+                                                                type="submit">Add Item</button>
                                                             <button type="button" class="btn btn-danger"
                                                                 data-dismiss="modal">Close</button>
                                                         </div>
@@ -294,18 +345,12 @@ include 'includes/dbConnection.php';
                                         </div>
                                     </div>
                                 </div>
-
-
-
-
-
                             </div>
-                        </div>
-                    </section>
-                </div>
+
             </div>
-                    </div>                    
-                    </div>
+            </div>
+            </div>                    
+            </div>
 
       <!-- Bootstrap core JavaScript-->
                             <script src="dashboard/vendor/jquery/jquery.min.js"></script>

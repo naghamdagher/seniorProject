@@ -92,7 +92,6 @@ include 'includes/dbConnection.php';
         <div id="wrapper">
             <!-- Sidebar -->
             <ul class="sidebar navbar-nav">
-
             <li class="nav-item">
                     <a class="nav-link" href="purchase.php">
                         <i class="fas fa-fw fa fa-truck"></i>
@@ -118,7 +117,7 @@ include 'includes/dbConnection.php';
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="price.php">
-                        <i class="fas fa-fw fa fa-balance-scale"></i>
+                        <i class="fas fa-fw fa fa-tag"></i>
                         <span>Prices</span>
                     </a>
                 </li>
@@ -156,6 +155,7 @@ include 'includes/dbConnection.php';
                     </a>
                 </li>
 
+
             </ul>
 
             <div id="content-wrapper">
@@ -164,7 +164,7 @@ include 'includes/dbConnection.php';
                     <section class="content">
                         <div class="col-md-12 box box-default"> <h1>
                                         <i class="fa fa-group"></i>
-                                        Clients
+                                        Client
                                     </h1> <hr>
 
                             <div class="container" id="member-registration-container">
@@ -185,7 +185,7 @@ include 'includes/dbConnection.php';
 
                             <!-- DataTables Example -->
                             <div class="card mb-3">
-                                <div class="card-header"><i class="fas fa-table"></i> Client List</div>
+                                <div class="card-header"><i class="fas fa-table"></i> Clients List</div>
                                 <div class="card-body">
                                     <div class="table-responsive">
                                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
