@@ -265,11 +265,39 @@ if (isset($_POST["btnaddItem"])) {
 	if ($con->query($sql) === true) {
 		$message = "New record created successfully";
 		$_SESSION["success"] = $message;
-		header("location: ../invoice.php");
+		header("location: ../transaction.php");
 	} else {
 		$message = "Error: " . $sql . "<br>" . $con->error;
 		$_SESSION["error"] = $message;
-		header("location: ../invoice..php");
+		header("location: ../transaction.php");
+	}
+
+	$con->close();
+}
+
+// add in Purchase
+if (isset($_POST["btnaddPurchase"])) {
+	
+	$Product_ID = $_POST["txtID"];
+	$Product = $_POST["txtName"];
+	$Description = $_POST["txtDescription"];
+	$Unit = $_POST["txtUnit"];
+	$Price = $_POST["txtPrice"];
+	$Qtty = $_GET[""];
+	$Total = $Price *$Qtt;
+
+	$sql = "INSERT INTO ttransaction(product_list_price_ID ,product_name,product_description,product_quantity,
+	product_price,ttotal	)
+	 VALUES ('" . $Product_ID . "', '" . $Product . "', '" . $Description . "','" . $Price . "','" . $Qtt . "','" . $Total . "')";
+
+	if ($con->query($sql) === true) {
+		$message = "New record created successfully";
+		$_SESSION["success"] = $message;
+		header("location: ../transaction.php");
+	} else {
+		$message = "Error: " . $sql . "<br>" . $con->error;
+		$_SESSION["error"] = $message;
+		header("location: ../transaction.php");
 	}
 
 	$con->close();

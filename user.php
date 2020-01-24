@@ -29,68 +29,69 @@ include 'includes/dbConnection.php';
 
 <body>
 
-<div id="page-top">
+    <div id="page-top">
 
-<nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+        <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-    <a class="navbar-brand mr-1" href="Ulight.php">U-light Admin</a>
+            <a class="navbar-brand mr-1" href="Ulight.php">U-light Admin</a>
 
-    <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
-        <i class="fas fa-bars"></i>
-    </button>
+            <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+                <i class="fas fa-bars"></i>
+            </button>
 
-    <!-- Navbar Search -->
-    <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-5 my-2 my-md-0">
-        <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search for..." aria-label="Search"
-                aria-describedby="basic-addon2">
-            <div class="input-group-append">
-                <button class="btn" style="background-color: orange;" type="button">
-                    <i class="fas fa-search"></i>
-                </button>
+            <!-- Navbar Search -->
+            <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-5 my-2 my-md-0">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search for..." aria-label="Search"
+                        aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                        <button class="btn" style="background-color: orange;" type="button">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+            <!-- Navbar -->
+            <ul class="navbar-nav ml-auto ml-md-0">
+
+                <li class="nav-item dropdown no-arrow">
+                    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-user-circle fa-fw"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
+                    </div>
+                </li>
+            </ul>
+
+        </nav>
+
+        <!-- Logout Modal-->
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                        <a class="btn btn-primary" href="Ulight.php">Logout</a>
+                    </div>
+                </div>
             </div>
         </div>
-    </form>
-
-    <!-- Navbar -->
-    <ul class="navbar-nav ml-auto ml-md-0">
-
-        <li class="nav-item dropdown no-arrow">
-            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-user-circle fa-fw"></i>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                
-                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
-            </div>
-        </li>
-    </ul>
-
-</nav>
-
-<!-- Logout Modal-->
-<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-<div class="modal-dialog" role="document">
-<div class="modal-content">
-    <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-        </button>
-    </div>
-    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-    <div class="modal-footer">
-        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-        <a class="btn btn-primary" href="Ulight.php">Logout</a>
-    </div>
-</div>
-</div>
-</div>
         <div id="wrapper">
             <!-- Sidebar -->
             <ul class="sidebar navbar-nav">
-            <li class="nav-item">
+                <li class="nav-item">
                     <a class="nav-link" href="purchase.php">
                         <i class="fas fa-fw fa fa-truck"></i>
                         <span>Purchase</span>
@@ -98,7 +99,7 @@ include 'includes/dbConnection.php';
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="transaction.php">
-                        <i class="fas fa-fw fa fa-industry" ></i>
+                        <i class="fas fa-fw fa fa-industry"></i>
                         <span>Transaction</span>
                     </a>
                 </li>
@@ -145,7 +146,7 @@ include 'includes/dbConnection.php';
                         <i class="fas fa-fw fa-user"></i>
                         <span>User</span></a>
                 </li>
-                
+
                 <li class="nav-item">
                     <a class="nav-link" href="client.php">
                         <i class="fas fa-fw fa fa-users"></i>
@@ -160,11 +161,11 @@ include 'includes/dbConnection.php';
                 <div class="container-fluid">
                     <section class="content">
                         <div class="col-md-12 box box-default">
-                              <h1>
-                                        <i class="fa fa-group"></i>
-                                        User
-                                    </h1>
-                               
+                            <h1>
+                                <i class="fa fa-group"></i>
+                                User
+                            </h1>
+
                             <hr>
 
                             <div class="container" id="member-registration-container">
@@ -208,9 +209,9 @@ include 'includes/dbConnection.php';
                                                 <td><?php echo $row['email']; ?></td>
                                                 <td><?php echo $row['uaddress']; ?></td>
                                                 <td><?php echo $row['position']; ?></td>
-                                                
+
                                                 <td>
-                                                    
+
                                                     <a href="user.php?idd=<?php echo $row['u_id']; ?>"
                                                         onclick="return confirm('Are you sure ?')" style="color:red;"><i
                                                             class="fas fa-trash"></i></a>
@@ -312,23 +313,23 @@ include 'includes/dbConnection.php';
                     </section>
                 </div>
             </div>
-                    </div>                    
-                    </div>
+        </div>
+    </div>
 
-      <!-- Bootstrap core JavaScript-->
-                            <script src="dashboard/vendor/jquery/jquery.min.js"></script>
-                            <script src="dashboard/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap core JavaScript-->
+    <script src="dashboard/vendor/jquery/jquery.min.js"></script>
+    <script src="dashboard/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-                            <!-- Core plugin JavaScript-->
-                            <script src="dashboard/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="dashboard/vendor/jquery-easing/jquery.easing.min.js"></script>
 
-                            <!-- Page level plugin JavaScript-->
-                            <script src="dashboard/vendor/chart.js/Chart.min.js"></script>
-                            <script src="dashboard/vendor/datatables/jquery.dataTables.js"></script>
-                            <script src="dashboard/vendor/datatables/dataTables.bootstrap4.js"></script>
+    <!-- Page level plugin JavaScript-->
+    <script src="dashboard/vendor/chart.js/Chart.min.js"></script>
+    <script src="dashboard/vendor/datatables/jquery.dataTables.js"></script>
+    <script src="dashboard/vendor/datatables/dataTables.bootstrap4.js"></script>
 
-                            <!-- Custom scripts for all pages-->
-                            <script src="dashboard/js/sb-admin.min.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="dashboard/js/sb-admin.min.js"></script>
 
 </body>
 

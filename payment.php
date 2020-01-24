@@ -314,7 +314,26 @@ include 'includes/dbConnection.php';
                                                     <div class="form-group">
                                                         <div class="col-md-6">
                                                             <label>Product </label>
+                                                            
+ <?php
 
+																		echo '<select class="form-control" id="cbxPackages" name="cbxPackages" style="height:40px;">	
+
+																		<option>Select</option>';
+
+																		$sqli = "SELECT pname FROM product";
+																		$result = mysqli_query($con, $sqli);
+																		while ($row = mysqli_fetch_array($result)) {
+																		echo '<option>'.$row['pname'].'</option>';
+																		}
+
+																		echo '</select>';
+
+																		?>
+
+                                                            </select>
+                                                                    </div>
+                                                                    </div>
 
 
             <!--?php
@@ -357,38 +376,42 @@ $query = $mysqli->query("SELECT * FROM products");
 
                                                     <div class="form-group">
                                                         <div class="col-md-6">
-                                                            <label>Amount</label>
-                                                            <input type="text" name="txtAmount" disabled="disabled"
-                                                                id="txtAmount" value="total taba3 l items"
-                                                                placeholder="Total Amount" class="form-control"
-                                                                required="required">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <div class="col-md-6">
                                                             <label>TVA %</label>
-                                                            <input type="text" name="txtTVA" disabled="disabled"
-                                                                id="txtTva" value="pre set by admin"
+                                                            <input type="text" name="txtAmount" disabled="disabled"
+                                                                id="txtAmount" value="11"
                                                                 placeholder="Total Amount" class="form-control"
                                                                 required="required">
                                                         </div>
                                                     </div>
+                                                    <!--
+                                                    <div class="form-group">
+                                                        <div class="col-md-6">
+                                                           //<label>TVA %</label>
+                                                            <input type="text" name="txtTVA" disabled="disabled"
+                                                                id="txtTva" value=""
+                                                                placeholder="Total Amount" class="form-control"
+                                                                required="required">
+                                                        </div>
+                                                    </div>
+                              
 
 
                                                     <div class="form-group">
                                                         <div class="col-md-6">
-                                                            <label>Payment Discount</label>
+                                                          //  <label>Payment Discount</label>
                                                             <input type="text" name="txtDiscount"
                                                                 onchange="totalAmount()" id="txtDiscount"
                                                                 placeholder="Discount" class="form-control">
                                                         </div>
                                                     </div>
+-->
                                                     <div class="form-group">
                                                         <div class="col-md-6">
-                                                            <label>Total Amount</label>
-                                                            <input type="text" name="txtTotal" disabled="disabled"
+                                                            <label> Amount</label>
+                                                            <input type="text" name="txtTotal" 
                                                                 id="txtTotal" placeholder="Total" class="form-control"
                                                                 required="required">
+                                            
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
@@ -420,6 +443,7 @@ $query = $mysqli->query("SELECT * FROM products");
                                                                     <option value="YUAN">YUAN</option>
                                                                 </select>
                                                             </div>
+                                                            <!--
                                                             <div class="form-group">
                                                                 <div class="col-md-6">
                                                                     <label>Paid Amount</label>
@@ -440,7 +464,7 @@ $query = $mysqli->query("SELECT * FROM products");
                                                                         required="required">
                                                                 </div>
                                                             </div>
-
+-->
 
                                                             <div class="modal-footer">
                                                                 <button class="btn btn-md btn-primary"

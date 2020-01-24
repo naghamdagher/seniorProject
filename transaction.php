@@ -385,7 +385,7 @@ include 'includes/dbConnection.php';
                                                 <td><?php echo $row['price'];?> </td>
 
                                                 <td>
-                                                    <a href="price.php?idd=<?php echo $row['p_id']; ?>"
+                                                    <a href="transaction.php?idd=<?php echo $row['p_id']; ?>"
                                                         onclick="return confirm('Are you sure ?')" style="color:red;"><i
                                                             class="fas fa-trash"></i></a>
                                                 </td>
@@ -401,7 +401,7 @@ include 'includes/dbConnection.php';
                                 <?php
                             if (isset($_GET['idd'])) {
                                 $idd = $_GET['idd'];
-                                $sql = "Delete from ttransaction where p_id='" . $idd . "'";
+                                $sql = "Delete from ttransaction where t_id='" . $idd . "'";
                                 if ($idd != '') {
                                     $query = mysqli_query($con, $sql);
                                     //header("Refresh:0; url=member.php");

@@ -361,7 +361,7 @@ include 'includes/dbConnection.php';
         <div class="card-body">
           <!--Header-->
           <div class="form-header blue accent-1">
-            <h3><i class="fas fa-envelope"></i> Write to us:</h3>
+            <h3> Write to us:</h3>
           </div>
 
           <p>We would like to hear from you</p>
@@ -369,25 +369,25 @@ include 'includes/dbConnection.php';
 
           <!--Body-->
           <div class="md-form">
-            <i class="fas fa-user prefix grey-text"></i>
+            
             <input type="text" id="form-name" class="form-control">
             <label for="form-name">Your name</label>
           </div>
 
           <div class="md-form">
-            <i class="fas fa-envelope prefix grey-text"></i>
+            
             <input type="text" id="form-email" class="form-control">
             <label for="form-email">Your email</label>
           </div>
 
           <div class="md-form">
-            <i class="fas fa-tag prefix grey-text"></i>
+            
             <input type="text" id="form-Subject" class="form-control">
             <label for="form-Subject">Subject</label>
           </div>
 
           <div class="md-form">
-            <i class="fas fa-pencil-alt prefix grey-text"></i>
+            
             <textarea id="form-text" class="form-control md-textarea" rows="3"></textarea>
             
           </div>
@@ -420,22 +420,26 @@ include 'includes/dbConnection.php';
       <br>
       <!--Buttons-->
       <div class="row text-center">
-        <div class="col-md-4">
-          <a class="btn-floating blue accent-1"><i class="fas fa-map-marker-alt"></i></a>
-          <p><a href="http://"><img src="Images/twitter.png" alt="twitter" height="50px" width="50px"></a>
-          <a href="http://"><img src="Images/linkedin.jpg" alt="linkedin" height="50px" width="50px"></a></p>
+        <div class="col-md-6">
+         
+            
+<!-- Add icon library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+            <a href="http://" ><i class="fa fa-instagram" style="width=90px; height=90px;" ></i></a>  
+            <a href="http://"><i class="fa fa-facebook-square"></i></a>  
+            <a href="http://"><i class="fa fa-twitter-square"></i></a>  
+            <a href="http://"><i class="fa fa-linkedin-square"></i></a>  
+     
         </div>
 
-        <div class="col-md-4">
-          <a class="btn-floating blue accent-1"><i class="fas fa-phone"></i></a>
-          <p>+ 01 234 567 89</p>
-          <p>Mon - Fri, 8:00-22:00</p>
-        </div>
 
-        <div class="col-md-4">
-          <a class="btn-floating blue accent-1"><i class="fas fa-envelope"></i></a>
-          <p>info@gmail.com</p>
-          <p>sale@gmail.com</p>
+
+
+        <div class="col-md-6">
+          
+          <p>since868@gmail.com</p>
+          <p>03523227</p>
         </div>
       </div>
 

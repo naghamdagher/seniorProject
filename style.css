@@ -18,6 +18,19 @@ section {
     p {
       font-size: 18px;
     }
+
+    html,body {
+      height: 100%;
+      background-color: white;
+    }
+    header {
+      padding: 156px 0 100px;
+    }
+    
+    
+    section {
+      padding: 150px 0;
+    }
   }
   @media only screen and (max-width: 1200px) {
     p {
@@ -27,6 +40,19 @@ section {
       height: 300px;
       width: 400px;
     }
+
+    html,body {
+      height: 100%;
+      background-color: white;
+    }
+    header {
+      padding: 156px 0 100px;
+    }
+    
+    
+    section {
+      padding: 150px 0;
+    }
   }
   
   @media only screen and (max-width: 920px) {
@@ -34,10 +60,49 @@ section {
       font-size: 14px;
     }
   }
+
+
+  
+  @media (min-width: 520px){
+    p {
+      font-size: 12px;
+    }
+
+    html,body {
+      height: 100%;
+      background-color: white;
+    }
+    header {
+      padding: 156px 0 100px;
+    }
+    
+    
+    section {
+      padding: 150px 0;
+    }
+    .socialmeia {
+      height: 20px;
+      width: 20px;
+    }
+
+      }
   
   @media only screen and (max-width: 768px) {
     p {
       font-size: 12px;
+    }
+
+    html,body {
+      height: 100%;
+      background-color: white;
+    }
+    header {
+      padding: 156px 0 100px;
+    }
+    
+    
+    section {
+      padding: 150px 0;
     }
   }
   
@@ -264,3 +329,26 @@ table{
   width:100%;
   position:absolute;
   }
+
+
+
+
+  
+
+/* Facebook */
+.fa-facebook-square {
+  color: black;
+  size: 40px;
+}
+
+/* Twitter */
+.fa-twitter-square {
+ 
+  color: black;
+}
+.fa-linkedin-square{
+  color: black;
+}
+.fa-instagram {
+  color: black;
+}
